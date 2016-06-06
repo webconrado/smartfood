@@ -77,7 +77,7 @@
 <!--<preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />-->
 
 <!-- Custom Preferences-->
-<preference name="phonegap-version" value="5.2.0." />          <!-- all: current version of PhoneGap -->
+<preference name="phonegap-version" value="3.7.0" />          <!-- all: current version of PhoneGap -->
 <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
 <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
 <preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->
