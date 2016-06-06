@@ -85,27 +85,28 @@ Framework7.prototype.plugins.welcomescreen = function (app, globalPluginParams) 
           '<div class="welcomescreen-closebtn close-welcomescreen">{{options.closeButtonText}}</div>' +
           '{{/if}}' +
           '<div class="welcomescreen-swiper swiper-container">' +
-            '<div class="swiper-wrapper">' +
-              '{{#each slides}}' +
-              '<div class="swiper-slide" {{#if id}}id="{{id}}"{{/if}}>' +
-                '{{#if content}}' +
-                  '<div class="welcomescreen-content">{{content}}</div>' +
-                '{{else}}' +
-                  '{{#if picture}}' +
-                    '<div class="welcomescreen-picture">{{picture}}</div>' +
-                  '{{/if}}' +
-                  '{{#if text}}' +
-                    '<div class="welcomescreen-text">{{text}}</div>' +
-                  '{{/if}}' +
-                '{{/if}}' +
-              '</div>' +
-              '{{/each}}' +
-            '</div>' +
-            '{{#if options.pagination}}' +
-            '<div class="welcomescreen-pagination swiper-pagination"></div>' +
-            '{{/if}}' +
+          '<div class="swiper-wrapper">' +
+          '{{#each slides}}' +
+          '<div class="swiper-slide" {{#if id}}id="{{id}}"{{/if}}>' +
+          '{{#if content}}' +
+          '<div class="welcomescreen-content">{{content}}</div>' +
+          '{{else}}' +
+          '{{#if picture}}' +
+          '<div class="welcomescreen-logo"><img src="img/logo-novo.png" width="300"></div>' +
+          '<div class="welcomescreen-picture">{{picture}}</div>' +
+          '{{/if}}' +
+          '{{#if text}}' +
+          '<div class="welcomescreen-text">{{text}}</div>' +
+          '{{/if}}' +
+          '{{/if}}' +
           '</div>' +
-        '</div>';
+          '{{/each}}' +
+          '</div>' +
+          '{{#if options.pagination}}' +
+          '<div class="welcomescreen-pagination swiper-pagination"></div>' +
+          '{{/if}}' +
+          '</div>' +
+          '</div>';
     }
     
     /**
