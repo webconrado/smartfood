@@ -11,7 +11,7 @@
 }
 
 .welcomescreen-closebtn{
-  top: 5px;
+  top: 35px;
   right: 0px;
   position: absolute;
   text-align: right;
@@ -38,12 +38,12 @@
 .welcomescreen-logo{
   width: 100%;
   text-align: center;
-  margin-top: 40%;
+  margin-top: 150px;
 }
 .welcomescreen-picture{
   width: 100%;
   text-align: center;
-  margin-top: 30%;
+  margin-top: 80px;
 }
 
 .welcomescreen-text {
