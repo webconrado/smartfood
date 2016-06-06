@@ -1,0 +1,90 @@
+//ON PAGE INIT
+myApp.onPageInit('menu', function (page) {
+	$("#menu_filhos_template").load("templates/menu_filhos_template.html");
+	check_token();
+	if(localStorage.parent==1){
+		listarFilhos();
+	}else{
+		usuario();
+	}
+	if(!localStorage.selectfilho){
+		setTimeout(function(){document.getElementsByClassName("img_menu_filho")[0].click()},500);
+	}else{
+		setTimeout(function(){document.getElementById(localStorage.selectfilho).click()},500);
+	}
+});
+
+//INFORMACOES DO FILHO
+function usuario(){
+	console.log("getuser");
+	var formData = new Object();
+	route = "/usuario";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#menu_filhos_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("menu_filhos_div").innerHTML = html;
+		$$('.img_menu_filho').on('click',selectFilho);
+		if(!localStorage.selectfilho){
+			setTimeout(function(){document.getElementsByClassName("img_menu_filho")[0].click()},500);
+		}else{
+			setTimeout(function(){document.getElementById(localStorage.selectfilho).click()},500);
+		}
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+
+//LISTAR FILHOS
+function listarFilhos(){
+	console.log("listfilho");
+	var formData = new Object();
+	route = "/listarFilhos";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		console.log(JSON.stringify(data));
+		var template = $$('#menu_filhos_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("menu_filhos_div").innerHTML = html;
+		$$('.img_menu_filho').on('click',selectFilho);
+		if(!localStorage.selectfilho){
+			setTimeout(function(){document.getElementsByClassName("img_menu_filho")[0].click()},500);
+		}else{
+			setTimeout(function(){document.getElementById(localStorage.selectfilho).click()},500);
+		}
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+
+//SELECT A SON
+function selectFilho(event){
+	var formData = new Object();
+	localStorage.selectfilho = event.srcElement.id;
+	for(i=0;i<document.getElementsByClassName("img_menu_filho").length;i++){
+		if(document.getElementsByClassName("img_menu_filho")[i]){
+			document.getElementsByClassName("img_menu_filho")[i].style.border="";
+		}
+	}
+	event.srcElement.style.border="2px solid #f58423";
+}

@@ -1,0 +1,514 @@
+						{{#each text}}
+						{{#if nome_materia}}
+							<li class="accordion-item notas_list">
+								<a href="" class="item-link item-content">
+									<div class="item-inner">
+										<div class="item-input">
+											<div class="row">
+												<div class="col-70">{{nome_materia}}</div>
+												<div class="col-30">{{nota}}</div>
+											</div>
+										</div>
+									</div>
+								</a> 
+								<div class="accordion-item-content" style="padding:0px 15px; color:#666;">
+									<div class="list-block">
+										<ul>
+											{{#if legenda_01}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_01}}
+																{{legenda_01}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_01}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_02}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_02}}
+																{{legenda_02}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_02}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_03}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_03}}
+																{{legenda_03}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_03}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_04}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_04}}
+																{{legenda_04}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_04}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_05}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_05}}
+																{{legenda_05}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_05}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_06}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_06}}
+																{{legenda_06}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_06}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_07}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_07}}
+																{{legenda_07}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_07}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_08}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_08}}
+																{{legenda_08}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_08}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_09}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_09}}
+																{{legenda_09}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_09}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_10}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_10}}
+																{{legenda_10}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_10}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_11}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_11}}
+																{{legenda_11}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_11}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_12}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_12}}
+																{{legenda_12}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_12}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_13}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_13}}
+																{{legenda_13}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_13}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_14}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_14}}
+																{{legenda_14}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_14}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_15}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_15}}
+																{{legenda_15}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_15}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_16}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_16}}
+																{{legenda_16}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_16}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_17}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_17}}
+																{{legenda_17}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_17}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_18}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_18}}
+																{{legenda_18}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_18}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_19}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_19}}
+																{{legenda_19}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_19}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_20}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_20}}
+																{{legenda_20}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_20}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_21}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_21}}
+																{{legenda_21}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_21}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_22}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_22}}
+																{{legenda_2}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_22}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_23}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_23}}
+																{{legenda_23}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_23}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_24}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_24}}
+																{{legenda_24}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_24}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_25}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_25}}
+																{{legenda_25}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_25}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_26}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_26}}
+																{{legenda_26}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_26}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_27}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_27}}
+																{{legenda_27}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_27}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_28}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_28}}
+																{{legenda_28}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_28}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_29}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_29}}
+																{{legenda_29}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_29}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+											{{#if legenda_30}}
+											<li class="notas_list">
+												<div class="item-inner">
+													<div class="item-input">
+															{{#if legenda_30}}
+																{{legenda_30}}
+															{{else}}
+																Sem legenda
+															{{/if}}
+													</div>
+													<div class="item-after">
+															{{nota_30}}
+													</div>
+												</div>
+											</li>
+											{{/if}}
+										</ul>
+									</div>
+								</div>
+							</li>
+						{{/if}}
+						{{else}}
+							<li class="boletim_list">
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-input">
+											<span class="aula_materia">Nenhuma nota disponível</span></br>
+										</div>
+									</div>
+								</div>
+							</li>
+						{{/each}}
+
+

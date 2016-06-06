@@ -1,0 +1,172 @@
+				<!-- HOME -->
+				<div class="pages">
+					<div data-page="home" class="page tabbar-labels-fixed">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="left">
+									<a href="#" id="home_back" class="link back icon-only"><i class="icon icon-back"></i></a>
+								</div>
+								<div class="center sliding"></div>
+								<div class="right">
+									<a href="#" class="link icon-only open-panel"><i class="fa fa-filter"></i></a>
+									<a href="pesquisa.html" class="link icon-only"><i class="fa fa-search"></i></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="toolbar tabbar tabbar-labels">
+							<div class="toolbar-inner">
+								<a href="#tab1" class="button tab-link active"><i class="fa fa-home" style="font-size:1.8em"></i><span class="tabbar-label">Home</span></a>
+								<a href="#tab2" class="button tab-link"><i class="fa fa-user" style="font-size:1.8em"></i><span class="tabbar-label">Perfil</span></a>
+								<a href="#tab3" class="button tab-link"><i class="fa fa-globe" style="font-size:1.8em"></i><span id="pedidos_count"></span><span class="tabbar-label">Pedidos</span></a>
+								<a href="#tab4" class="button tab-link"><i class="fa fa-shopping-cart" style="font-size:1.8em"></i><span class="tabbar-label">Compras</span><span id="carrinho_count"></span></a>
+								<a href="#tab5" class="button tab-link"><i class="fa fa-cutlery" style="font-size:1.8em"></i><span class="tabbar-label">Pratos</span></a>
+							</div>
+						</div>
+
+						<div class="page-content" id="page-content-home">
+							<!--<div class="pull-to-refresh-layer">
+								<div class="preloader"></div>
+								<div class="pull-to-refresh-arrow"></div>
+							</div>-->
+							<div class="tabs-animated-wrap">
+								<div class="tabs">
+									<div id="tab1" class="tab active">
+										<div class="content-block" id="div_mapa_home"s style="margin:0px; margin-top:7px;">
+										</div> 
+										<!--
+										<div class="list-block media-list" id="div_usuario_home" style="margin:0px;">
+										</div>
+										<script id="template_usuario_home" type="text/template7">
+										</script>
+										<div class="content-block" id="div_mapa_size" style="margin:0px; text-align:center; display:none; color:#db1f2f;">
+											<i class="fa fa-2x fa-chevron-down"></i>	
+										</div>
+										-->
+										<div class="list-block" id="div_home" style="margin:0px;">
+											<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
+										</div>
+										<script id="template_home" type="text/template7">
+										</script>
+									</div>
+
+
+									<div id="tab2" class="tab">
+
+										<div class="content-block" id="div_usuario_home" style="margin:0px;">
+										</div>
+										<script id="template_usuario_home" type="text/template7">
+										</script>
+
+										<div class="content-block-title">
+											Configurações
+										</div>
+										<div class="list-block">
+											<ul>
+												<li>
+													<a href="cadastro_finalizar.html" class="item-link close-panel">
+														<div class="item-content material">
+															<div class="item-inner">
+																<div class="item-input">
+																	Preferências do usuário
+																</div>
+															</div>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="foto_perfil.html" class="item-link close-panel">
+														<div class="item-content material">
+															<div class="item-inner">
+																<div class="item-input">
+																	Foto do perfil
+																</div>
+															</div>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="enderecos.html" class="item-link close-panel">
+														<div class="item-content material">
+															<div class="item-inner">
+																<div class="item-input">
+																	Endereços do usuário
+																</div>
+															</div>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="favoritos.html" class="item-link close-panel">
+														<div class="item-content material">
+															<div class="item-inner">
+																<div class="item-input">
+																	Favoritos
+																</div>
+															</div>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="reservas.html" class="item-link close-panel">
+														<div class="item-content material">
+															<div class="item-inner">
+																<div class="item-input">
+																	Minhas reservas
+																</div>
+															</div>
+														</div>
+													</a>
+												</li>
+
+												<li>
+													<a href="#" onclick="logout();" class="item-link close-panel">
+														<div class="item-content material">
+															<div class="item-inner">
+																<div class="item-input">
+																	Fazer logout
+																</div>
+															</div>
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div id="tab3" class="tab">
+										<div class="content-block-title">Meus de pedidos:</div>
+										<div class="list-block" id="div_pedidos">
+											<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
+										</div>
+										<script id="template_pedidos" type="text/template7">
+										</script>
+									</div>
+									<div id="tab4" class="tab">
+										<div class="content-block-title">Carrinho de compras:</div>
+										<div class="list-block" id="div_carrinho">
+											<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
+										</div>
+										<script id="template_carrinho" type="text/template7">
+										</script>
+										<div class="content-block" style="text-align:right;">
+											<a href="#" class="button" onclick="carrinho_limpar();" style="width:130px; display:inline-block;">Limpar</a>
+										</div>
+										<div class="content-block">
+											<a href="pedido_finalizar.html" class="button" id="btn_carrinho_finalizar" disabled style="width:100%; margin:0 auto;">Finalizar pedido - R$ <span id="total">0</span></a>
+										</div>
+
+
+									</div>
+									<div id="tab5" class="tab">
+										<div class="content-block-title">Pratos em alta:</div>
+										<div class="list-block accordion-list" id="div_sugestao">
+											<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
+										</div>
+										<script id="template_sugestao" type="text/template7">
+										</script>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>

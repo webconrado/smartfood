@@ -1,0 +1,26 @@
+							{{#each text}}
+								{{#if nome_turma}}
+								<li class="aulas_list">
+									<a href="aula.html" id="{{id}}" class="item-link turma" >
+										<div class="item-content">
+											<div class="item-inner">
+												<div class="item-input">
+													<span class="aula_materia">{{nome_turma}}</span></br>
+												</div>
+											</div>
+										</div>
+									</a>
+								</li>
+								{{/if}}
+							{{else}}
+								<li class="aulas_list">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-input">
+												<span class="aula_materia">Nenhuma turma cadastrada</span></br>
+											</div>
+										</div>
+									</div>
+								</li>
+							{{/each}}
+

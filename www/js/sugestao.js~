@@ -1,0 +1,73 @@
+//ON PAGE INIT
+myApp.onPageInit('sugestao', function (page) {
+	$("#template_sugestao").load("templates/sugestao_template.html");
+	check_token();
+});
+myApp.onPageAfterAnimation('sugestao', function (page) {
+	localStorage.carrinho="[]";
+	localStorage.removeItem('id_restaurante');
+
+	sugestao();
+
+	//Clear all intervals
+	for (var i = 1; i < 99999; i++) clearInterval(i);
+
+});
+
+//Restaurantes
+function sugestao(){
+	gps();
+	var formData = new Object();
+	formData.lat = localStorage.lat;
+	formData.lng = localStorage.lng;
+	stringData = JSON.stringify(formData);
+	route = "/sugestao";
+	$.ajax({
+		type: "POST",
+		url: webserviceURL+route+"/"+localStorage.token,
+		data: stringData,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#template_sugestao').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("div_sugestao").innerHTML = html;
+
+		var mySwiper = myApp.swiper('.swiper-container', {
+			pagination:'.swiper-pagination',
+			slidesPerView: 1,
+			speed: 400
+		});
+		lastSlide = 0;
+		/*mySwiper.on('slideChangeStart', function (obj) {
+			console.log(obj.activeIndex);
+			if (obj.activeIndex < lastSlide) {
+				lastSlide = obj.activeIndex;
+				console.log("OK");
+			}
+		});*/
+		 
+		//PULL TO REFRESH
+		myApp.pullToRefreshDone();
+		var pullToRefresh = $$('.pull-to-refresh-content');
+		pullToRefresh.on("refresh", function(e){
+			console.log("refresh");
+			if(loading) return;
+			var loading=true;
+			setTimeout(function(){
+				loading=false;
+				myApp.attachInfiniteScroll('.infinite-scroll');
+				sugestao();
+			},2000);
+		});
+
+		
+
+	}
+	function error(data,status){
+		myApp.alert(text_error);
+	}
+}

@@ -1,0 +1,39 @@
+//ON PAGE INIT
+myApp.onPageInit('sala_virtual_detalhe', function (page) {
+	$("#sala_virtual_detalhe_template").load("templates/sala_virtual_detalhe_template.html");
+	check_token();
+	sala_virtual_detalhe();
+});
+
+//aula detalhe
+function sala_virtual_detalhe(){
+	console.log("aulas_detalhe");
+	var formData = new Object();
+	formData.id_aula = mainView.url.split("id=")[1];
+	formData.id_aluno = localStorage.selectfilho;
+	route = "/aulaDetalhe";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		for(i=0;i<data.text.length;i++){
+			var d = $("<div>");
+			d.html(data.text[i].descricao);
+			data.text[i].descricao = d.text(); 
+		}
+
+		var template = $$('#sala_virtual_detalhe_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("sala_virtual_detalhe_div").innerHTML = html;
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}

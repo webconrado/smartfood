@@ -1,0 +1,21 @@
+						{{#each text}}
+							<div class="content-block-title" style="text-align:center;">{{titulo}}</div>
+
+							<div class="content-block" style="text-align:center;">
+								{{#if imagem}}
+									<img class="img_medium" onerror="imgError(this);" src="{{imagem}}">
+								{{else}}
+									<img class="img_medium" src="img/dummy480.png">
+								{{/if}}
+							</div>
+
+							<div class="content-block">
+								<div class="content-block-inner">
+									<h3>{{descricao}}</h3>
+									<p class="self_valor">R$: {{valor}}</p>
+								</div>
+							</div>
+						{{/each}}
+
+
+

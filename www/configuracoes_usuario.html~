@@ -1,0 +1,43 @@
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">
+							<a href="#" class="link back icon-only"><i class="fa fa-chevron-left"></i></a>
+						</div>
+						<div class="center sliding">SmartFoodWeb</div>
+					</div>
+				</div>
+				<!-- HOME -->
+				<div class="pages navbar-through toolbar-through">
+					<div data-page="configuracoes" class="page no-toolbar">
+						<div class="page-content">
+							<div class="content-block-title">Usuário:</div>
+							<div class="list-block">
+								<ul>
+									<li>
+										<a href="pedidos.html" class="item-link">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-input">
+														Meus pedidos
+													</div>
+												</div>
+											</div>
+										</a>
+									</li>
+
+									<li>
+										<a href="#" onclick="logout();" class="item-link">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-input">
+														Fazer logout
+													</div>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>

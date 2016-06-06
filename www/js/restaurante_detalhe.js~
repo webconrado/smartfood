@@ -1,0 +1,88 @@
+//ON PAGE INIT
+myApp.onPageInit('restaurante_detalhe', function (page) {
+	$("#template_restaurante_detalhe").load("templates/restaurante_detalhe_template.html");
+	check_token();
+});
+myApp.onPageAfterAnimation('restaurante_detalhe', function (page) {
+	restaurante_detalhe();
+	//Quantidade no carrinho
+	carrinhoArray = JSON.parse(localStorage.carrinho);
+	$("#carrinho_count").html(carrinhoArray.length);
+});
+
+//restaurante detalhe
+function restaurante_detalhe(){
+	id_restaurante = mainView.url.split("id=")[1];
+	route = "/restaurantes";
+	$.ajax({
+		type: "GET",
+		url: webserviceURL+route+"/"+localStorage.token+"/"+id_restaurante,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#template_restaurante_detalhe').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("div_restaurante_detalhe").innerHTML = html;
+
+		$$('.btn_comentario_adicionar').on('click', comentario_adicionar);
+		comentarios();
+
+	}
+	function error(data,status){
+		myApp.alert(text_error);
+	}
+}
+
+
+//restaurante comentarios
+function comentarios(){
+	id_restaurante = mainView.url.split("id=")[1];
+	route = "/comentarios";
+	$.ajax({
+		type: "GET",
+		url: webserviceURL+route+"/"+localStorage.token+"/"+id_restaurante,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#template_comentarios').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("div_comentarios").innerHTML = html;
+	}
+	function error(data,status){
+		myApp.alert(text_error);
+	}
+}
+
+function comentario_adicionar(){
+	var formData = myApp.formToJSON("#form_comentario");
+	id_restaurante = mainView.url.split("id=")[1];
+	route = "/comentarios";
+	if(formData.comentario.length>0){
+		stringData = JSON.stringify(formData);
+		$.ajax({
+			type: "POST",
+			url: webserviceURL+route+"/"+localStorage.token+"/"+id_restaurante,
+			data: stringData,
+			success: success,
+			error:error
+		});
+		function success(data,status){
+			console.log(data);
+			if(data.id>0){
+				comentarios();
+			}
+			myApp.alert(data.text);
+		}
+		function error(data,status){
+			myApp.alert(text_error);
+		}
+	}else{
+		myApp.alert(text_fields_error);
+	}
+}

@@ -1,0 +1,100 @@
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">
+							<a href="#" class="link back icon-only"><i class="fa fa-chevron-left"></i></a>
+						</div>
+						<div class="center sliding">SmartFoodWeb</div>
+					</div>
+				</div>
+				<!-- enderecos -->
+				<div class="pages navbar-through toolbar-through">
+					<div data-page="enderecos" class="page no-toolbar">
+						<form id="form_enderecos_adicionar">
+							<div class="page-content">
+								<div class="content-block-title">Adicionar um novo endereço:</div>
+								<div class="list-block">
+									<ul>
+										<li>
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">CEP</div>
+													<div class="item-input">
+														<input type="number" name="cep" id="cep" placeholder="Digite seu cep">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li id="numero_li" style="display:none;">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Número</div>
+													<div class="item-input">
+														<input type="number" name="numero" id="numero" placeholder="Digite seu número">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li id="complemento_li" style="display:none;">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Complemento</div>
+													<div class="item-input">
+														<input type="text" name="complemento" id="complemento" placeholder="Digite seu complemento">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li id="endereco_li" style="display:none;">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Endereço</div>
+													<div class="item-input">
+														<input type="text" name="endereco" id="endereco" placeholder="Digite seu endereço">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li id="bairro_li" style="display:none;">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Bairro</div>
+													<div class="item-input">
+														<input type="text" name="bairro" id="bairro" placeholder="Digite seu bairro">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li id="cidade_li" style="display:none;">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Cidade</div>
+													<div class="item-input">
+														<input type="text" name="cidade" id="cidade" placeholder="Digite sua cidade">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li id="estado_li" style="display:none;">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Estado</div>
+													<div class="item-input">
+														<input type="text" name="estado" id="estado" placeholder="Digite seu estado">
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="content-block" style="margin:10px auto; text-align:center;">
+									<a href="#" class="button btn_enderecos_adicionar">Salvar endereço</a>
+								</div>
+								<div class="list-block" id="div_enderecos">
+									<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
+								</div>
+								<script id="template_enderecos" type="text/template7">
+								</script>
+							</div>
+						</form>
+					</div>
+				</div>

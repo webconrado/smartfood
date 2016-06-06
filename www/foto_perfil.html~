@@ -1,0 +1,19 @@
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">
+							<a href="#" class="link back icon-only"><i class="fa fa-chevron-left"></i></a>
+						</div>
+						<div class="center sliding">SmartFoodWeb</div>
+					</div>
+				</div>
+				<!-- foto_perfil -->
+				<div class="pages navbar-through toolbar-through">
+					<div data-page="foto_perfil" class="page no-toolbar">
+						<form id="form_foto_perfil">
+							<div class="page-content" id="div_foto_perfil">
+							</div>
+							<script id="template_foto_perfil" type="text/template7">
+							</script>
+						</form>
+					</div>
+				</div>

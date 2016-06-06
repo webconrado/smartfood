@@ -1,0 +1,99 @@
+//ON PAGE INIT
+myApp.onPageInit('pedido_finalizar', function (page) {
+	$("#template_pedido_finalizar").load("templates/pedido_finalizar_template.html");
+	$("#template_pedido_finalizar_enderecos").load("templates/pedido_finalizar_enderecos_template.html");
+	check_token();
+	$$('.btn_pedido_finalizar').on('click', pedido_finalizar);
+	$("#cpf_fiscal").mask('000.000.000-00', {reverse: true});
+});
+myApp.onPageAfterAnimation('pedido_finalizar', function (page) {
+	pedido_finalizar_endereco();
+	carrinho_finalizar();
+});
+
+
+//Carrinho finalizar
+function carrinho_finalizar(){
+	data = new Object();
+	data.text = JSON.parse(localStorage.carrinho);
+	total=0;
+	for(i=0; i<data.text.length;i++){
+		data.text[i].count=i;
+		total+=parseFloat(data.text[i].valor);
+	}
+	total = total.toFixed(2);
+
+	var template = $$('#template_pedido_finalizar').html();
+	var compiledTemplate = Template7.compile(template);
+	var html = compiledTemplate(data);
+	document.getElementById("div_pedido_finalizar").innerHTML = html;
+
+	document.getElementById("total_pedido_finalizar").innerHTML = total;
+}
+
+
+//Checa se usuario quer adicionar novo endereço
+function pedido_finalizar_endereco_novo(){
+	if($('#div_pedido_finalizar_enderecos').val()=="novo"){
+		mainView.router.loadPage('novo_endereco.html');
+	}
+}
+
+//Enderecos ler
+function pedido_finalizar_endereco(){
+	route = "/usuario_enderecos";
+	$.ajax({
+		type: "GET",
+		url: webserviceURL+route+"/"+localStorage.token,
+		data: stringData,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#template_pedido_finalizar_enderecos').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("div_pedido_finalizar_enderecos").innerHTML = html;
+
+		if(data.text=="Erro"){
+			localStorage.enderecos=0;
+		}
+	}
+	function error(data,status){
+		myApp.alert(text_error);
+	}
+}
+
+//Pedido finalizar
+function pedido_finalizar(){
+	var formData = myApp.formToJSON("#form_pedido_finalizar");
+	formData.id_restaurante = localStorage.id_restaurante;
+	formData.carrinho = JSON.parse(localStorage.carrinho);
+	route = "/pedido_finalizar";
+	if(JSON.parse(localStorage.carrinho).length>0 && localStorage.id_restaurante>0 && formData.pagamento.length>0 && formData.id_endereco.length>0){
+		stringData = JSON.stringify(formData);
+		$.ajax({
+			type: "POST",
+			url: webserviceURL+route+"/"+localStorage.token,
+			data: stringData,
+			success: success,
+			error:error
+		});
+		function success(data,status){
+			console.log(data);
+			if(data.ok==1){
+				mainView.router.loadPage('pedidos.html');
+			}else{
+				myApp.alert(data.text);
+			}
+		}
+		function error(data,status){
+			myApp.alert(text_error);
+		}
+	}else{
+		myApp.alert(text_fields_error);
+	}
+}
+
+

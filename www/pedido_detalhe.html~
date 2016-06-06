@@ -1,0 +1,23 @@
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">
+							<a href="#" class="link back icon-only"><i class="fa fa-chevron-left"></i></a>
+						</div>
+						<div class="center sliding">SmartFoodWeb</div>
+					</div>
+				</div>
+				<!-- HOME -->
+				<div class="pages navbar-through toolbar-through">
+					<div data-page="pedido_detalhe" class="page no-toolbar">
+						<form id="form_pedido_detalhe">
+							<div class="page-content">
+								<div class="content-block-title">Histórico de pedido_detalhe:</div>
+								<div class="list-block" id="div_pedido_detalhe">
+									<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
+								</div>
+								<script id="template_pedido_detalhe" type="text/template7">
+								</script>
+							</div>
+						</form>
+					</div>
+				</div>

@@ -1,0 +1,62 @@
+					<div class="list-block">
+						<ul>
+						<!-- Text inputs -->
+							<li>
+							<div class="item-content">
+							<div class="item-inner">
+							<div class="item-title label">Título</div>
+							<div class="item-input">
+							<input type="text" placeholder="Título da aula" value="{{titulo}}">
+							</div>
+							</div>
+							</div>
+							</li>
+							<!-- Select -->
+							<li>
+							<div class="item-content">
+							<div class="item-inner">
+							<div class="item-title label">Matéria</div>
+							<div class="item-input">
+							<select>
+							{{#each text}}
+								<option>{{nome_materia}}</option>
+							{{/each}}
+							</select>
+							</div>
+							</div>
+							</div>
+							</li>
+							<!-- Date -->
+							<li>
+							<div class="item-content">
+							<div class="item-inner">
+							<div class="item-title label">Data</div>
+							<div class="item-input">
+							<input type="date" placeholder="Data da aula" value="2014-04-30">
+							</div>
+							</div>
+							</div>
+							</li>
+							<!-- Textarea -->
+							<li class="align-top">
+							<div class="item-content">
+							<div class="item-inner">
+							<div class="item-title label">Conteúdo</div>
+							<div class="item-input">
+							<textarea>{{conteudo}}</textarea>
+							</div>
+							</div>
+							</div>
+							</li>
+							<li class="align-top">
+							<div class="item-content">
+							<div class="item-inner">
+							<div class="item-title label">Atividade</div>
+							<div class="item-input">
+							<textarea>{{atividade}}</textarea>
+							</div>
+							</div>
+							</div>
+							</li>
+						</ul>
+					</div>

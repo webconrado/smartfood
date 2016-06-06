@@ -1,0 +1,30 @@
+						{{#each text}}
+						<ul>
+							<li>
+
+									<a href="restaurante_detalhe.html?id={{id}}" class="item-link">
+										<div class="item-content material">
+											<div class="row" style="width:100%; line-height:15px;">
+												<div class="col-25">
+													{{#if imagem}}
+														<div class="home_img"><img onerror="imgError(this);" src="{{imagem}}"></div>
+													{{else}}
+														<div class="home_img"><img src="img/dummy48.png"></div>
+													{{/if}}
+													<div class="home_distancia" style="text-align:center;">1,4km</div>
+												</div>
+												<div class="col-75">
+												<div class="home_titulo">{{titulo}}</div>
+												<span class="home_ncomentarios">{{tipo}}</span></br>
+												<span class="home_categoria">{{telefone}}</span></br>
+												<span class="home_endereco">{{endereco}}</span></br>
+												</div>
+											</div> 
+										</div>
+									</a>
+							</li>
+						</ul>
+						{{/each}}
+
+
+

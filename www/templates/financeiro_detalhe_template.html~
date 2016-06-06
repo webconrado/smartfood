@@ -1,0 +1,6 @@
+						{{#each text}}
+							<div class="financeiro_codigo"><i class="fa fa-barcode fa-5x"></i></div>
+							<div class="financeiro_descricao">Número do código de barras</div>
+							<div class="financeiro_codigo">{{boleto_codigo_barra}}</div>
+						{{/each}}
+

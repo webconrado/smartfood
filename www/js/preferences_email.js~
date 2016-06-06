@@ -1,0 +1,27 @@
+//ON PAGE INIT
+myApp.onPageInit('preferences_info', function (page) {
+	check_token();
+	preferences_info();
+	$$('.preferences_email_btn').on('click', preferences_email_save);
+});
+
+//PREFERENCES EMAIL SAVE
+function preferences_email_save(){
+	var formData = myApp.formToJSON('#form_preferences_email');
+	route = "/user/email";
+	$.ajax({
+		type: "POST",
+		url: webserviceURL+route+"/"+localStorage.token,
+		data: formData,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		myApp.alert(data.text);
+		mainView.router.loadPage('preferences.html');
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}

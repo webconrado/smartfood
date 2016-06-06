@@ -1,0 +1,77 @@
+//ON PAGE INIT
+myApp.onPageInit('preferences_info', function (page) {
+	check_token();
+	preferences_info();
+	$$('.preferences_info_btn').on('click', preferences_info_save);
+});
+
+//PREFERENCES INFO
+function preferences_info(){
+	route = "/user";
+	$.ajax({
+		type: "GET",
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		var template = $$('#preferences_info_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("preferences_info_div").innerHTML += html;
+		$("#zipcode").mask("99999-999");
+		$("#phone").mask("(99)9999-9999");
+		$("#mobile").mask("(99)99999-9999");
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+
+//PREFERENCES ZIPCODE
+function preferences_zipcode(){
+	document.getElementById("address").disabled=true;
+	zipcode = document.getElementById("zipcode").value;
+	number = document.getElementById("number").value;
+	$.ajax({
+		type: "GET",
+		url: "http://maps.googleapis.com/maps/api/geocode/json?address="+zipcode+"&sensor=false",
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		if(data.status=="OK"){
+			document.getElementById("address").value=data.results[0].formatted_address;
+			document.getElementById("address").disabled=true;
+		}else{
+			document.getElementById("address").disabled=false;
+		}
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+
+//PREFERENCES INFO SAVE
+function preferences_info_save(){
+	var formData = myApp.formToJSON('#form_preferences_info');
+	route = "/user";
+	$.ajax({
+		type: "POST",
+		url: webserviceURL+route+"/"+localStorage.token,
+		data: formData,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		myApp.alert(data.text);
+		mainView.router.loadPage('preferences.html');
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}

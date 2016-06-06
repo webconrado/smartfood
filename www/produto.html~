@@ -1,0 +1,22 @@
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">
+							<a href="#" class="link back icon-only"><i class="fa fa-chevron-left"></i></a>
+						</div>
+						<div class="center sliding">SmartFoodWeb</div>
+					</div>
+				</div>
+				<!-- produto -->
+				<div class="pages navbar-through toolbar-through">
+					<div data-page="produto" class="page no-toolbar">
+						<form id="form_produto">
+							<div class="page-content" id="div_produto">
+								<div class="content-block">
+									<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
+								</div>
+								<script id="template_produto" type="text/template7">
+								</script>
+							</div>
+						</form>
+					</div>
+				</div>

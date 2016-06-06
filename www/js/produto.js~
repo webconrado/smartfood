@@ -1,0 +1,34 @@
+//ON PAGE INIT
+myApp.onPageInit('produto', function (page) {
+	$("#template_produto").load("templates/produto_template.html");
+	check_token();
+	produto_detalhe();
+});
+myApp.onPageAfterAnimation('produto', function (page) {
+	//Quantidade no carrinho
+	carrinhoArray = JSON.parse(localStorage.carrinho);
+	$("#carrinho_count").html(carrinhoArray.length);
+});
+
+
+//produtos detalhe
+function produto_detalhe(){
+	id_produto = mainView.url.split("id=")[1];
+	route = "/produto_detalhe";
+	$.ajax({
+		type: "GET",
+		url: webserviceURL+route+"/"+localStorage.token+"/"+id_produto,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#template_produto').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("div_produto").innerHTML = html;
+	}
+	function error(data,status){
+		myApp.alert(text_error);
+	}
+}

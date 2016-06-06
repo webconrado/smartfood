@@ -1,0 +1,57 @@
+//ocorrencias
+/*
+function ocorrencias(){
+	$("#ocorrencias_template").load("templates/ocorrencias_template.html");
+	console.log("ocorrencias");
+	var formData = new Object();
+	formData.id_aula = mainView.url.split("id=")[1];
+	formData.turma =  localStorage.selectTurma;
+	route = "/ocorrencias";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#ocorrencias_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("ocorrencias_div").innerHTML = html;
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+*/
+
+function ocorrencias_tipos(){
+	$("#ocorrencias_template").load("templates/ocorrencias_template.html");
+	console.log("ocorrencias");
+	var formData = new Object();
+	formData.id_aula = mainView.url.split("id=")[1];
+	formData.turma =  localStorage.selectTurma;
+	route = "/ocorrencias_tipos";
+	$.ajax({
+		type: "GET",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#ocorrencias_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("ocorrencias_div").innerHTML = html;
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+

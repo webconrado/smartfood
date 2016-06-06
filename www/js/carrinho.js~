@@ -1,0 +1,105 @@
+//ON PAGE INIT
+myApp.onPageInit('carrinho', function (page) {
+	$("#template_carrinho").load("templates/carrinho_template.html");
+	check_token();
+});
+myApp.onPageAfterAnimation('carrinho', function (page) {
+	carrinho();
+});
+
+//Floating carrinho
+function floating_carrinho(){
+	mainView.router.loadPage('home.html');
+	myApp.showTab("#tab4");
+}
+
+//Carrinho
+function carrinho(){
+	data = new Object();
+	data.text = JSON.parse(localStorage.carrinho);
+	total=0;
+	for(i=0; i<data.text.length;i++){
+		data.text[i].count=i;
+		total+=parseFloat(data.text[i].valor);
+	}
+	total = total.toFixed(2);
+	document.getElementById("total").innerHTML = total;
+
+	var template = $$('#template_carrinho').html();
+	var compiledTemplate = Template7.compile(template);
+	var html = compiledTemplate(data);
+	document.getElementById("div_carrinho").innerHTML = html;
+
+	//$("#carrinho_count").html(carrinhoArray.length);
+	//$("#floating_carrinho_count").html(carrinhoArray.length);
+
+	if(data.text.length==0){
+		$( "#btn_carrinho_finalizar" ).attr("disabled", true );
+	}else{
+		$( "#btn_carrinho_finalizar" ).attr("disabled", false );
+	}
+}
+
+
+
+//Adicionar ao carrinho
+function carrinho_adicionar(obj){
+	produto = new Object();
+	produto.id = obj.dataset.id;
+	produto.titulo = obj.dataset.titulo;
+	produto.valor = obj.dataset.valor;
+	produto.tipo = obj.dataset.tipo;
+	
+	carrinhoArray = JSON.parse(localStorage.carrinho);
+
+	//Regras do self service no carrinho
+	count_mistura=0;
+	count_guarnicao=0;
+	carrinhoArray.forEach(function(element) {
+		if(element.tipo){
+			if(element.tipo=="MISTURA"){
+				count_mistura++;
+			}
+			if(element.tipo=="GUARNICAO"){
+				count_guarnicao++;
+			}
+		}
+	});
+
+	if(produto.tipo=="MISTURA" && count_mistura >= 2){
+		myApp.alert("Apenas 2 misturas são permitidas");
+	}else if(produto.tipo=="GUARNICAO" && count_guarnicao >= 3){
+		myApp.alert("Apenas 3 guarnições são permitidas");
+	}else{
+		carrinhoArray.push(produto);
+		localStorage.carrinho = JSON.stringify(carrinhoArray);
+		$("#carrinho_count").html(carrinhoArray.length);
+		$("#floating_carrinho_count").html(carrinhoArray.length);
+		$("#carrinho_count_self").html(carrinhoArray.length);
+
+		myApp.addNotification({
+			title: produto.titulo+' foi adicionado ao carrinho com sucesso!',
+			hold:1000
+		});
+	}
+	carrinho();
+}
+
+//Remover item do carrinho
+function carrinho_remover(obj){
+	myApp.confirm("Deseja mesmo remover o item do carrinho?",function(){
+		$("#div_carrinho").children().children()[obj.dataset.count].remove();
+		carrinhoArray = JSON.parse(localStorage.carrinho);
+		carrinhoArray.splice(obj.dataset.count,1);
+		localStorage.carrinho = JSON.stringify(carrinhoArray);
+		carrinho();
+	})
+}
+
+//Limpar carrinho
+function carrinho_limpar(){
+	myApp.confirm("Deseja mesmo limpar o carrinho?",function(){
+		localStorage.carrinho="[]";
+		carrinho();
+	})
+}

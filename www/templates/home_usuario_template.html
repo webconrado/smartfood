@@ -1,0 +1,10 @@
+						{{#each text}}
+							{{#if imagem}}
+								<div class="img_profile_pic btn_foto_perfil"><img onerror="imgError(this);" src="{{imagem}}?time={{modificado}}"></div>
+							{{else}}
+								<div class="img_profile_pic btn_foto_perfil"><img src="img/dummy48.png"></div>
+							{{/if}}
+						{{/each}}
+
+
+

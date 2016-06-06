@@ -1,0 +1,54 @@
+						{{#each text}}
+							<div class="content-block" style="text-align:center; padding-top:180px; margin:0px;">
+								{{#if imagem}}
+									<!--<img class="img_medium" onerror="imgError(this);" src="{{imagem}}">-->
+								{{else}}
+									<!--<img class="img_medium" src="img/dummy480.png">-->
+								{{/if}}
+							</div>
+
+							<div class="card">
+								<div class="card-header"><b>{{titulo}}</b><span class="tiny_date">{{tipo}}</span></div>
+								<div class="card-content">
+									<div class="card-content-inner">{{descricao}}</div>
+								</div>
+								<div class="card-footer">
+									<a href="#" class="link">
+										Fazer uma reserva
+										<input style="width:145px; height:25px; position:absolute; color:transparent; border:0px; right:5px; background:transparent; z-index:10;" type="text" id="data_reserva" />
+									</a>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header"><b>Informações adicionais</b></div>
+								<div class="card-content">
+									<div class="card-content-inner">
+									<b>Endereço:</b> {{endereco}}</br>
+									<b>Telefone:</b> {{telefone}}</br>
+									<b>Horário:</b> {{horario_abertura}} até {{horario_fechamento}}</br>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header"><b>Formas de pagamento</b></div>
+								<div class="card-content">
+									<div class="card-content-inner">
+										Mastercard, Dinners, Vale-refeição, Dinheiro, Visa
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header"><b>Localização</b></div>
+								<div class="card-content">
+									<div class="card-content-inner" id="restaurante_detalhe_template_mapa">
+									</div>
+								</div>
+							</div>
+
+						{{/each}}
+
+
+

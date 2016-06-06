@@ -1,0 +1,52 @@
+							{{#each text}}
+								{{#if nome_aluno}}
+								<li class="accordion-item{{id_aluno}}" style="padding-left:15px;">
+										<div class="item-inner">
+											<div class="item-input" style="padding:10px 0px;" onclick="myApp.accordionToggle('.accordion-item{{id_aluno}}')">
+												<span class="aula_materia">{{nome_aluno}}</span>
+											</div>
+											<div class="item-after">
+												<label class="label-checkbox item-content">
+													<input type="checkbox" name="faltas" value="faltas" checked="">
+													<div class="item-media" style="padding-top:0px; padding-bottom:18px;">
+														<i class="icon icon-form-checkbox"></i>
+													</div>
+												</label>
+											</div>
+										</div>
+									<div class="accordion-item-content" style="color:#666;">
+										<div class="list-block">
+											<ul style="padding-left:0px;">
+												{{#each faltas}}
+													<li>
+														<label class="label-checkbox item-content">
+															{{#if ordem>0}}
+																<input type="checkbox" name="faltas" value="faltas">
+															{{else}}
+																<input type="checkbox" name="faltas" value="faltas" checked="checked">
+															{{/if}}
+															<div class="item-media">
+																<i class="icon icon-form-checkbox"></i>
+															</div>
+															<div class="item-inner">
+																<div class="item-title">Periodo {{periodo}}</div>
+															</div>
+														</label>
+													</li>
+												{{/each}}
+											<ul>
+										</div>
+									</div>
+								</li>
+								{{/if}}
+							{{else}}
+								<li class="aulas_list">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-input">
+												<span class="aula_materia">Nenhum aluno cadastrado</span></br>
+											</div>
+										</div>
+									</div>
+								</li>
+							{{/each}}

@@ -1,0 +1,77 @@
+//ON PAGE INIT
+myApp.onPageInit('comunicados', function (page) {
+	$("#comunicados_template").load("templates/comunicados_template.html");
+	check_token();
+	comunicados();
+});
+
+//COMUNICADOS
+function comunicados(offset){
+	console.log("comunicados");
+	var formData = new Object();
+	formData.id_aluno = localStorage.selectfilho;
+	if(offset!=undefined){
+		formData.offset = offset;
+	}else{
+		formData.offset = 0;
+	}
+	route = "/comunicados";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#comunicados_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		if(offset>0){
+			document.getElementById("comunicados_div").innerHTML += html;
+		}else{
+			document.getElementById("comunicados_div").innerHTML = html;
+		}
+
+		//INFINITE SCROLL
+		loading=false;
+		if(data.ok>=10){
+			var infiniteScroll = $$('.infinite-scroll');
+			infiniteScroll.on('infinite', function(){
+				if(loading) return;
+				console.log("scroll infinito");
+				loading=true;
+				document.getElementById("comunicados_div").innerHTML+="<div id='loading_spinner' style='text-align:center; margin-bottom:30px;'><i class='fa fa-spinner fa-spin  fa-2x'></i></div>";
+				setTimeout(function (){
+					offset = document.getElementsByClassName("comunicados_list").length;
+					document.getElementById("loading_spinner").remove();
+					loading=false;
+					$$('.infinite-scroll-preloader').remove();
+					comunicados(offset);
+				}, 1000);
+			});
+		}else{
+			myApp.detachInfiniteScroll($$('.infinite-scroll'));
+		}
+
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+
+	//PULL TO REFRESH
+	myApp.pullToRefreshDone();
+	var pullToRefresh = $$('.pull-to-refresh-content');
+	pullToRefresh.on("refresh", function(e){
+		console.log("refresh");
+		if(loading) return;
+		var loading=true;
+		setTimeout(function(){
+			loading=false;
+			myApp.attachInfiniteScroll('.infinite-scroll');
+			comunicados(0);
+		},1000);
+	});
+}

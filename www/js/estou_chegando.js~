@@ -1,0 +1,99 @@
+//ON PAGE INIT
+myApp.onPageInit('estou_chegando', function (page) {
+	$("#estou_chegando_template").load("templates/estou_chegando_template.html");
+	//$('#btn_estou_chegando').className="estou_chegando_btn_active";
+	//$('#btn_estou_chegando').on('click',estouChegando);
+	check_token();
+	if(localStorage.parent==1){
+		listarFilhosEstouChegando();
+	}else{
+		usuarioEstouChegando();
+	}
+});
+
+
+//INFORMACOES DO FILHO
+function usuarioEstouChegando(){
+	console.log("getuser");
+	var formData = new Object();
+	route = "/usuario";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#estou_chegando_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("estou_chegando_div").innerHTML = html;
+		$$('.img_estou_chegando_filho').on('click',selectFilhoEstouChegando);
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+
+//LISTAR FILHOS
+function listarFilhosEstouChegando(){
+	console.log("listfilho");
+	var formData = new Object();
+	route = "/listarFilhos";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#estou_chegando_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("estou_chegando_div").innerHTML = html;
+		$$('.img_estou_chegando_filho').on('click',selectFilhoEstouChegando);
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+
+//SELECT A SON
+function selectFilhoEstouChegando(event){
+	//document.getElementById("btn_estou_chegando").setAttribute("disabled",true);
+	document.getElementById("btn_estou_chegando").removeAttribute("disabled");
+	var formData = new Object();
+	localStorage.selectfilhoEstouChegando = event.srcElement.id;
+	for(i=0;i<document.getElementsByClassName("img_estou_chegando_filho").length;i++){
+		if(document.getElementsByClassName("img_estou_chegando_filho")[i]){
+			document.getElementsByClassName("img_estou_chegando_filho")[i].style.border="";
+		}
+	}
+	event.srcElement.style.border="2px solid #f58423";
+}
+
+//ESTOU CHEGANDO
+function estouChegando(){
+	if(this.className=="estou_chegando_btn"){
+		console.log("desativa estou chegando");
+		this.className="estou_chegando_btn_active";
+		document.getElementById("btn_estou_chegando").innerHTML="Desativado";
+		for(var i=1; i < 5000; i++)window.clearInterval(i);
+	}else{
+		console.log("ativa estou chegando");
+		this.className="estou_chegando_btn";
+		document.getElementById("btn_estou_chegando").innerHTML="<i class='fa fa-cog fa-spin'></i> Enviando posição";
+		setInterval(function(){
+			gps();
+			var gps_info = JSON.parse(localStorage.gps);
+			console.log(gps_info);
+		},5000);
+	}
+	console.log("estou chegando");
+}

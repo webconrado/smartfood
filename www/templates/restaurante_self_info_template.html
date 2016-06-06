@@ -1,0 +1,27 @@
+						{{#each text}}
+						<ul>
+							<li>
+								<a href="restaurante_detalhe.html?id={{id}}" class="item-content">
+									<div class="item-content">
+										<div class="item-media">
+											{{#if imagem}}
+												<div class="img_thumb"><img onerror="imgError(this);" src="{{imagem}}"></div>
+											{{else}}
+												<div class="img_thumb"><img src="img/dummy48.png"></div>
+											{{/if}}
+										</div>
+											<div class="item-inner">
+												<div class="item-title-row">
+													<div class="item-title">{{titulo}}</div>
+												</div>
+												<div class="item-subtitle">{{descricao}}</div>
+												<div class="item-text">{{telefone}}</div>
+											</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+						{{/each}}
+
+
+
