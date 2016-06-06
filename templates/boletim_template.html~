@@ -1,0 +1,29 @@
+						{{#each text}}
+							{{#if nome_materia}}
+								<li class="boletim_list">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-input">
+												<div class="row">
+													<div class="col-50">{{nome_materia}}</div>
+													<div class="col-15" style="text-align:center">{{faltas}}</div>
+													<div class="col-15" style="text-align:center">{{ocorrencias}}</div>
+													<div class="col-20">{{nota}}</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							{{/if}}
+						{{else}}
+							<li class="boletim_list">
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-input">
+											<span class="aula_materia">Nenhuma nota encontrada</span></br>
+										</div>
+									</div>
+								</div>
+							</li>
+						{{/each}}
+

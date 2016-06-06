@@ -1,0 +1,54 @@
+//ON PAGE INIT
+myApp.onPageInit('boletim', function (page) {
+	$("#boletim_template").load("templates/boletim_template.html");
+	$("#periodo_selecionado").click(abre_periodos_boletim);
+	$(".periodos").click(seleciona_periodo_boletim);
+	localStorage.trimestre = "trimestre1";
+	check_token();
+	boletim();
+	document.getElementById("periodos").style.height="35px";
+});
+
+//Abre periodos
+function abre_periodos_boletim(){
+	if(document.getElementById("periodos").style.height=="35px"){
+		document.getElementById("periodos").style.height="auto";
+	}else{
+		document.getElementById("periodos").style.height="35px";
+	}
+}
+
+//Seleciona periodos
+function seleciona_periodo_boletim(event){
+	document.getElementById("periodo_selecionado").innerHTML=event.target.innerHTML+' <i style="font-size:12px;" class="fa fa-chevron-down"></i>';
+	localStorage.trimestre = event.target.id;
+	abre_periodos();
+	boletim();
+}
+
+//boletim
+function boletim(){
+	console.log("boletim");
+	var formData = new Object();
+	formData.id_aluno = localStorage.selectfilho;
+	formData.trimestre = localStorage.trimestre;
+	route = "/boletim";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#boletim_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("boletim_div").innerHTML = html;
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}

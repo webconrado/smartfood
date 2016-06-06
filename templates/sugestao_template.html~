@@ -1,0 +1,53 @@
+						<ul>
+						{{#if ok>0}}
+								<li>
+									<div class="swiper-container">
+										<div class="swiper-pagination"></div>
+										<div class="swiper-wrapper">
+											{{#each text}}
+											<div class="swiper-slide">
+												{{#if imagem}}
+													<!--
+													<div class="img_slider" onclick="carrinho_adicionar(this);" data-id="{{id_produto}}" id="{{id_produto}}" data-tipo="{{tipo_produto}}" data-titulo="{{titulo}}" data-valor="{{valor}}">
+														<img onerror="imgError(this);" src="{{imagem}}">
+													</div>
+													-->
+													<div class="img_sugestao">
+														<a href="produto_sugestao.html?id={{id_produto}}"><img onerror="imgError(this);" src="{{imagem}}"></a>
+													</div>
+													<div class="titulo_sugestao">
+														<a href="produto_sugestao.html?id={{id_produto}}" onclick="carrinho_adicionar(this);" data-id="{{id_produto}}" id="{{id_produto}}" data-tipo="{{tipo_produto}}" data-titulo="{{titulo}}" data-valor="{{valor}}"><h3>{{titulo}}</h3></a>
+													</div>
+												{{else}}
+													<!--	
+													<div class="img_slider" onclick="carrinho_adicionar(this);" data-id="{{id_produto}}" id="{{id_produto}}" data-tipo="{{tipo_produto}}" data-titulo="{{titulo}}" data-valor="{{valor}}">
+														<img src="img/dummy48.png">
+													</div>
+													-->
+													<div class="img_sugestao">
+														<a href="produto_sugestao.html?id={{id_produto}}" onclick="carrinho_adicionar(this);" data-id="{{id_produto}}" id="{{id_produto}}" data-tipo="{{tipo_produto}}" data-titulo="{{titulo}}" data-valor="{{valor}}"><img onerror="imgError(this);" src="img/dummy48.png"></a>
+													</div>
+													<div class="titulo_sugestao">
+														<a href="produto_sugestao.html?id={{id_produto}}" onclick="carrinho_adicionar(this);" data-id="{{id_produto}}" id="{{id_produto}}" data-tipo="{{tipo_produto}}" data-titulo="{{titulo}}" data-valor="{{valor}}"><h3>{{titulo}}</h3></a>
+													</div>
+												{{/if}}
+											</div>
+											{{/each}}
+										</div>
+									</div>
+								</li>
+						{{else}}
+							<li>
+								<a href="#">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-input">
+												Nenhum prato próximo a você
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+						{{/if}}
+						</ul>
+

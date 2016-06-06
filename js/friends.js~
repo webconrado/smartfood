@@ -1,0 +1,111 @@
+//ON PAGE INIT
+myApp.onPageInit('friends', function (page) {
+	check_token();
+	friends();
+	$$('.search_input_friends').on('keyup',friends_search);
+});
+
+//friends
+function friends(){
+	route = "/friends";
+	$.ajax({
+		type: "GET",
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		var template = $$('#friends_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("friends_div").innerHTML = html;
+
+		//BTN ACTIONS
+		$$('.friend_add_btn').on('click',friends_add);
+		
+		//PULL TO REFRESH
+		myApp.pullToRefreshDone();
+		var pullToRefresh = $$('.pull-to-refresh-content');
+		pullToRefresh.on("refresh", function(e){
+			if(loading) return;
+			var loading=true;
+			setTimeout(function(){
+				loading=false;
+				friends();
+			},2000);
+		});
+
+		//INFINITE SCROLL
+		var infiniteScroll = $$('.infinite-scroll');
+		loading = false;
+		infiniteScroll.on('infinite', function(){
+			console.log("scroll infinito");
+			if(loading) return;
+			loading=true;
+			setTimeout(function () {
+				offset = document.getElementsByClassName("list_custom list_social").length;
+				loading=false;
+				$$('.infinite-scroll-preloader').remove();
+      				//myApp.detachInfiniteScroll($$('.infinite-scroll'));
+			}, 1000);
+		}); 
+
+		
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+
+//friends search
+function friends_search(){
+	document.getElementById("friends_div").innerHTML='<div style="text-align:center;"><i class="fa fa-refresh fa-spin"></i></div>';
+	var formData = new Object();
+	formData.input_search = document.getElementById("search_friends").value;
+	if(formData.input_search.length>1){
+		route = "/friends/search";
+		$.ajax({
+			type: "POST",
+			data: formData,
+			url: webserviceURL+route+"/"+localStorage.token,
+			success: success,
+			error:error
+		});
+		function success(data,status){
+			var template = $$('#friends_template').html();
+			var compiledTemplate = Template7.compile(template);
+			var html = compiledTemplate(data);
+			document.getElementById("friends_div").innerHTML = html;
+			//BTN ACTIONS
+			$$('.friend_add_btn').on('click',friends_add);
+		}
+		function error(data,status){
+			console.log("error");
+			console.log(data);
+		}
+	}else{
+		friends();
+	}
+}
+
+//friends add
+function friends_add(event){
+	var formData = new Object();
+	formData.friend_id = event.srcElement.id;
+	route = "/friends/add";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		friends();
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}

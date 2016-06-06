@@ -1,0 +1,75 @@
+						<ul>
+						{{#each text}}
+							<li>
+								<a href="#" class="item-content">
+									<div class="item-inner">
+										<div class="item-input" style="text-align:center;">
+											{{#js_compare "this.status=='0'"}}
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-clock-o"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-cutlery"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-truck"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-check-circle"></i>
+											{{/js_compare}}
+											{{#js_compare "this.status=='1'"}}
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-clock-o"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-cutlery"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-truck"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-check-circle"></i>
+											{{/js_compare}}
+											{{#js_compare "this.status=='2'"}}
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-clock-o"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-cutlery"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-truck"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-check-circle"></i>
+											{{/js_compare}}
+											{{#js_compare "this.status=='3'"}}
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-clock-o"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-cutlery"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-truck"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:0.3; margin-right:5px;" class="fa fa-3x fa-check-circle"></i>
+											{{/js_compare}}
+											{{#js_compare "this.status=='4'"}}
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-clock-o"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-cutlery"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-truck"></i>
+												<i style="opacity:0.3; margin-right:5px; position:relative; top:-10px;" class="fa fa-chevron-right"></i>
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-check-circle"></i>
+											{{/js_compare}}
+											{{#js_compare "this.status=='9'"}}
+												<i style="opacity:1; margin-right:5px;" class="fa fa-3x fa-close"></i>
+											{{/js_compare}}
+										</div>
+									</div>
+								</a>
+							</li>
+
+
+							<li>
+								<a href="#" class="item-content">
+									<div class="item-inner">
+										<div class="item-input">
+											<h1><b>R$ {{total}}</h1></b>
+										</div>
+										<div class="item-after">
+											<span class="tiny_date">Data: {{data}}</span>
+										</div>
+									</div>
+								</a>
+							</li>
+						{{/each}}
+						</ul>
+

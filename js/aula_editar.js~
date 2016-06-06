@@ -1,0 +1,73 @@
+//ON PAGE INIT
+myApp.onPageInit('aula_editar', function (page) {
+	$("#aula_editar_template").load("templates/aula_editar_template.html");
+	$$('.toolbar-inner').html('<a href="#" onclick="aulaEditarSalvar()" class="btn_toolbar">Salvar aula</a>');
+	check_token();
+	aula_editar();
+});
+myApp.onPageAfterAnimation('aula_editar', function (page) {
+	$$('.toolbar-inner').html('<a href="#" onclick="aulaEditarSalvar()" class="btn_toolbar">Salvar aula</a>');
+});
+
+//aula editar
+function aula_editar(){
+	console.log("aula editar");
+	var formData = new Object();
+	formData.id_aula = localStorage.selectAula;
+	formData.id_aluno = localStorage.selectfilho;
+	route = "/aulaDetalhe";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		for(i=0;i<data.text.length;i++){
+			var d = $("<div>");
+			d.html(data.text[i].descricao);
+			data.text[i].descricao = d.text(); 
+		}
+
+		var template = $$('#aula_editar_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("aula_editar_div").innerHTML = html;
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
+
+//aula nova salvar
+function aulaEditarSalvar(){
+	console.log("aula_editar_salvar");
+	var formData = new Object();
+	formData.aula = localStorage.selectAula;
+	formData.ano = localStorage.selectAno;
+	formData.curso = localStorage.selectCurso;
+	formData.turma = localStorage.selectTurma;
+	formData.materia = document.getElementById("materia").value;
+	formData.quantidade = document.getElementById("quantidade").value;
+	formData.data = document.getElementById("data").value;
+	formData.conteudo = document.getElementById("conteudo").value;
+	formData.atividade = document.getElementById("atividade").value;
+	route = "/aulaEditarSalvar";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}

@@ -1,0 +1,37 @@
+//ON PAGE INIT
+myApp.onPageInit('financeiro', function (page) {
+	$("#financeiro_template").load("templates/financeiro_template.html");
+	$("#periodo_selecionado").click(abre_periodos);
+	$(".periodos").click(seleciona_periodo);
+	localStorage.trimestre = "trimestre1";
+	check_token();
+	financeiro();
+	document.getElementById("periodos").style.height="35px";
+});
+
+//financeiro
+function financeiro(){
+	console.log("financeiro");
+	var formData = new Object();
+	formData.id_aluno = localStorage.selectfilho;
+	formData.trimestre = localStorage.trimestre;
+	route = "/financeiro";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#financeiro_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("financeiro_div").innerHTML = html;
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}

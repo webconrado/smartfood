@@ -1,0 +1,75 @@
+//CADASTRO FACEBOOK
+function cadastro_facebook(){
+	console.log("fb");
+	var formData = new Object();
+	route = "/cadastro_facebook";
+	formData.email = JSON.parse(localStorage.facebook).email;
+	formData.fbid = JSON.parse(localStorage.facebook).id;
+	formData.nome = JSON.parse(localStorage.facebook).name;
+	formData.imagem = "http://graph.facebook.com/"+formData.fbid+"/picture?type=large";
+	if(formData.email.length>0 && formData.fbid.length>0){
+		stringData = JSON.stringify(formData);
+		$.ajax({
+			type: "POST",
+			url: webserviceURL+route,
+			data: stringData,
+			success: success,
+			error:error
+		});
+		function success(data,status){
+			console.log(data);
+			if(data.fb_error==1){
+				myApp.alert(data.text);
+			}else{
+				login_app_facebook(formData.fbid);
+			}
+		}
+		function error(data,status){
+			myApp.alert(text_error);
+		}
+	}else{
+		myApp.alert(text_fields_error);
+	}
+}
+
+//LOGIN FACEBOOK
+function login_app_facebook(fbid){
+	myApp.showPreloader();
+	var formData = new Object();
+	formData.fbid = fbid;	
+	if(formData.fbid.length>0){
+		stringData = JSON.stringify(formData);
+		route = "/login_facebook";
+		$.ajax({
+			type: "POST",
+			url: webserviceURL+route,
+			data: stringData,
+			success: success,
+			error:error
+		});
+		function success(data,status){
+			console.log(data);
+			myApp.hidePreloader();
+			if(data.text.length>0){
+				cadastro_facebook();
+			}else{
+				localStorage.token = data.token;
+				localStorage.cadastro = data.cadastro;
+				localStorage.enderecos = data.enderecos;
+				autologin();
+			}
+		}
+		function error(data,status){
+			console.log(data);
+			if(status=="error"){
+				myApp.alert(text_error);
+			}else{
+				myApp.alert(data.text);
+			}
+		}
+	}else{
+		myApp.hidePreloader();
+		myApp.alert(text_fields_error);
+	}
+}
+

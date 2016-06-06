@@ -1,0 +1,30 @@
+							{{#each text}}
+								{{#if conteudo}}
+								<li class="aulas_list">
+									<a href="sala_virtual_detalhe.html?id={{id}}" class="item-link" >
+										<div class="item-content">
+											<div class="item-media">
+													<span class="aula_data">{{data}}</span></br>
+											</div>
+											<div class="item-inner">
+												<div class="item-input">
+													<span class="aula_materia">{{nome_materia}}</span></br>
+													<span class="aula_assunto">{{titulo}}</span>
+												</div>
+											</div>
+										</div>
+									</a>
+								</li>
+								{{/if}}
+							{{else}}
+								<li class="aulas_list">
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-input">
+												<span class="aula_materia">Nenhuma aula encontrada</span></br>
+											</div>
+										</div>
+									</div>
+								</li>
+							{{/each}}
+

@@ -1,0 +1,74 @@
+//ON PAGE INIT
+myApp.onPageInit('usuario_editar', function (page) {
+	$$('.btn_usuario_editar').on('click', usuario_editar);
+	check_token();
+});
+myApp.onPageAfterAnimation('usuario_editar', function (page) {
+	usuario_ler();
+});
+
+//usuario ler
+function usuario_ler(){
+	route = "/usuario";
+	$.ajax({
+		type: "GET",
+		url: webserviceURL+route+"/"+localStorage.token,
+		data: stringData,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		//$("#cpf").val(data.text[0].cpf);
+		$("#nome").val(data.text[0].nome);
+		$("#telefone").val(data.text[0].telefone);
+		$("#raio").val(data.text[0].raio);
+		$("#cpf").mask('000.000.000-00', {reverse: true});
+		$('#telefone').mask("(99) 9999-99999");
+		//Raio atualizar
+		$('#raio_txt').html("("+$("#raio").val()+"km)");
+		setInterval(function(){
+			$('#raio_txt').html("("+$("#raio").val()+"km)");
+		},1000);
+
+	}
+	function error(data,status){
+		myApp.alert(text_error);
+	}
+}
+
+//usuario_editar
+function usuario_editar(){
+	var formData = myApp.formToJSON("#form_usuario_editar");
+	route = "/usuario";
+	formData.app_finalizar = true; 
+	if(formData.nome.length>0 && formData.telefone.length>0){
+		stringData = JSON.stringify(formData);
+		$.ajax({
+			type: "POST",
+			url: webserviceURL+route+"/"+localStorage.token,
+			data: stringData,
+			success: success,
+			error:error
+		});
+		function success(data,status){
+			console.log(data);
+			if(data.id>0){
+				//atualiza o localstorage de cadastro
+				localStorage.cadastro=1;
+				//testa se usuario ja tem enderecos cadastrados
+				if(data.enderecos>0){
+					mainView.router.loadPage('home.html');
+				}else{
+					mainView.router.loadPage('enderecos.html');
+				}
+			}
+			myApp.alert(data.text);
+		}
+		function error(data,status){
+			myApp.alert(text_error);
+		}
+	}else{
+		myApp.alert(text_fields_error);
+	}
+}

@@ -1,0 +1,31 @@
+						<ul>
+							{{#if ok>0}}
+								{{#each text}}
+								<li>
+									<a href="#" class="item-content material">
+										<div class="item-inner">
+											<div class="item-input">
+												<div class="item-title">{{titulo}} <span class="tiny_date">p/ {{npessoas}} pessoas</span></div>
+											</div>
+											<div class="item-after icon-only">
+												Data: {{data}}</br>
+											</div>
+										</div>
+									</a>
+								</li>
+								{{/each}}
+							{{else}}
+								<li>
+									<a href="#">
+										<div class="item-content">
+											<div class="item-inner">
+												<div class="item-input">
+													Nenhuma reserva cadastrada
+												</div>
+											</div>
+										</div>
+									</a>
+								</li>
+							{{/if}}
+						</ul>
+

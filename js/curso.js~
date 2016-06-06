@@ -1,0 +1,38 @@
+//ON PAGE INIT
+myApp.onPageInit('curso', function (page) {
+	$("#curso_template").load("templates/curso_template.html");
+	check_token();
+	curso();
+});
+
+//SELECIONA O CURSO
+function selectCurso(event){
+	console.log(event);
+	localStorage.selectCurso = event.srcElement.id;
+}
+
+//INFORMACOES DO CURSO
+function curso(){
+	console.log("curso");
+	var formData = new Object();
+	route = "/curso";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#curso_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("curso_div").innerHTML = html;
+		$$('.curso').on('click',selectCurso);
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}

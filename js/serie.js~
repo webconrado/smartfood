@@ -1,0 +1,38 @@
+//ON PAGE INIT
+myApp.onPageInit('ano', function (page) {
+	$("#ano_template").load("templates/ano_template.html");
+	check_token();
+	ano();
+
+	data="";
+	var template = $$('#ano_template').html();
+	var compiledTemplate = Template7.compile(template);
+	var html = compiledTemplate(data);
+	document.getElementById("ano_div").innerHTML = html;
+
+});
+
+//INFORMACOES DO FILHO
+function ano(){
+	console.log("ano letivo");
+	var formData = new Object();
+	route = "/ano";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#ano_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("ano_div").innerHTML = html;
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}

@@ -1,0 +1,6 @@
+						{{#each text}}
+							<span class="comunicado_data">{{data}}</span></br>
+							{{assunto}}</br></br>
+							{{descricao}}
+						{{/each}}
+

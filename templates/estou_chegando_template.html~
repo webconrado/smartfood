@@ -1,0 +1,14 @@
+					<div class="menu_filhos">
+						{{#each text}}
+							<div class="menu_filho_box">
+								{{#if imagem}}
+									<img id="{{id}}" class="img_menu_filho" src="{{imagem}}" />
+								{{else}}
+									<img id="{{id}}" class="img_menu_filho" src="img/dummy48.png" />
+								{{/if}}
+								</br>
+								{{nome_aluno}}
+							</div>
+						{{/each}}
+					</div>
+

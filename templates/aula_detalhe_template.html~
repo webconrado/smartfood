@@ -1,0 +1,8 @@
+						{{#each text}}
+							<div class="comunicado_assunto">
+								{{nome_materia}}
+								<div style="display:inline-block; float:right;">{{data}}</div>
+							</div>
+							<div class="comunicado_descricao">{{conteudo}}</br>{{atividade}}</div>
+						{{/each}}
+

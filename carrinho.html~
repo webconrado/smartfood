@@ -1,0 +1,29 @@
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">
+							<a href="#" class="link back icon-only"><i class="fa fa-chevron-left"></i></a>
+						</div>
+						<div class="center sliding">SmartFoodWeb</div>
+						<div class="right">
+							<a href="#" onclick="carrinho_limpar();" class="link icon-only"><i class="fa fa-trash"></i></a>
+						</div>
+						<div class="subnavbar">
+							<a href="pedido_finalizar.html" class="button" id="btn_pedido_finalizar" disabled style="width:100%; margin:0 auto;">Finalizar pedido - R$ <span id="total">0</span></a>
+						</div>
+					</div>
+				</div>
+				<!-- carrinho -->
+				<div class="pages navbar-through toolbar-through">
+					<div data-page="carrinho" class="page no-toolbar">
+						<form id="form_carrinho">
+							<div class="page-content">
+								<div class="list-block" id="div_carrinho">
+									<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
+								</div>
+								<script id="template_carrinho" type="text/template7">
+								</script>
+							</div>
+						</form>
+					</div>
+				</div>
+

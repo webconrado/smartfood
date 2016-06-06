@@ -1,0 +1,54 @@
+//ON PAGE INIT
+myApp.onPageInit('notas', function (page) {
+	$("#notas_template").load("templates/notas_template.html");
+	$("#periodo_selecionado").click(abre_periodos);
+	$(".periodos").click(seleciona_periodo);
+	localStorage.trimestre = "trimestre1";
+	check_token();
+	notas();
+	document.getElementById("periodos").style.height="35px";
+});
+
+//Abre periodos
+function abre_periodos(){
+	if(document.getElementById("periodos").style.height=="35px"){
+		document.getElementById("periodos").style.height="auto";
+	}else{
+		document.getElementById("periodos").style.height="35px";
+	}
+}
+
+//Seleciona periodos
+function seleciona_periodo(event){
+	document.getElementById("periodo_selecionado").innerHTML=event.target.innerHTML+' <i style="font-size:12px;" class="fa fa-chevron-down"></i>';
+	localStorage.trimestre = event.target.id;
+	abre_periodos();
+	notas();
+}
+
+//Notas
+function notas(offset){
+	console.log("notas");
+	var formData = new Object();
+	formData.id_aluno = localStorage.selectfilho;
+	formData.trimestre = localStorage.trimestre;
+	route = "/notas";
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url: webserviceURL+route+"/"+localStorage.token,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log(data);
+		var template = $$('#notas_template').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		document.getElementById("notas_div").innerHTML = html;
+	}
+	function error(data,status){
+		console.log("error");
+		console.log(data);
+	}
+}
