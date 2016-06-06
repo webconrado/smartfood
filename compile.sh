@@ -1,6 +1,6 @@
 #ID NO PHONEGAP BUILD
 id="1520918"
-phonegap_user="webconrado@gmail.com"
+phonegap_user="faleconosco@conradoweb.com.br"
 phonegap_pass="LUlu200725"
 android_key_pass="123456"
 android_id="93444"
@@ -11,7 +11,7 @@ activity="smrtfoodweb"
 
 #COMMIT NO GIT
 clear 
-echo "machine github.com  login gomesf \n password da010690" > $HOME/.netrc
+echo "machine github.com  login webconrado \n password LUlu200725" > $HOME/.netrc
 git diff --diff-filter=D --name-only -z | xargs -0 git rm
 git add *
 data=$(date)
