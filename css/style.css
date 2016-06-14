@@ -467,7 +467,12 @@ a{
 	min-height:55px;
 }
 
-
+#login_form{
+	padding: 0 5%;
+}
+#login{
+	background:#000;
+}
 
 .searchbar_pesquisa{
 	padding:5px;
