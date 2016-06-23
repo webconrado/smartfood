@@ -26,6 +26,7 @@
 	background:url("../img/back-login.png");
 	width: 100%;
 	height: 100%;
+	padding: 10px 0 80px;
 }
 .home_btn_login, .home_btn_cadastro{
 	width: 47%;
