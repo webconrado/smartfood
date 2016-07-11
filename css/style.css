@@ -55,7 +55,7 @@
 	-o-border-radius: 8px !important;
 	font-family: 'Lato', sans-serif !important;;
 	font-weight: 300 !important;
-	padding: 5px 0 39px !important;
+	padding: 5px 0 39px 43px !important;
 }
 .home_btn_login_facebook:before{
 	font-family: 'FontAwesome';

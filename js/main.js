@@ -163,18 +163,28 @@ var mainView = myApp.addView('.view-main', {
 var welcomescreen_slides = [
 	{
 		id: 'slide0',
-		picture: '<div class="tutorialicon"><i class="fa fa-cutlery fa-4x"></i></div>',
-		text: 'Bem vindo ao smartfood! Bem vindo ao smartfood!'
+		picture: '<div class="tutorialicon"><i class="fa fa-mobile fa-6x"></i></div>',
+		text: 'Faça seu pedido no conforto da sua casa!'
 	},
 	{
 		id: 'slide1',
-		picture: '<div class="tutorialicon"><i class="fa fa-coffee fa-4x"></i></div>',
-		text: 'Bem vindo ao smartfood! Bem vindo ao smartfood!'
+		picture: '<div class="tutorialicon"><i class="fa fa-cutlery fa-5x"></i></div>',
+		text: 'Monte seu prato self-service online.'
 	},
 	{
 		id: 'slide2',
-		picture: '<div class="tutorialicon"><i class="fa fa-star fa-4x"></i></div>',
-		text: 'Bem vindo ao smartfood!'
+		picture: '<div class="tutorialicon"><i class="fa fa-home fa-5x"></i></div>',
+		text: 'Receba em casa ou busque no local.'
+	},
+	{
+		id: 'slide3',
+		picture: '<div class="tutorialicon"><i class="fa fa-map-marker fa-5x"></i></div>',
+		text: 'Tá na dúvida? Veja quais são os mais pedidos da sua região!'
+	},
+	{
+		id: 'slide4',
+		picture: '<div class="tutorialicon"><i class="fa fa-clock-o fa-5x"></i></div>',
+		text: 'Cansado de esperar? Faça sua reserva antes de sair de casa!'
 	}
 ];
 var options = {
