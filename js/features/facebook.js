@@ -1,14 +1,14 @@
 //APP ID
-appId = "399248013601234";
+appId = "1716062265281020";
 
 //FACEBOOK LOGOUT
 function fb_logout(){
 	facebookConnectPlugin.logout(success, error);
 	function success(response){
-		console.log(response)
+		console.log(response);
 	}
 	function error(response){
-		console.log(response)
+		console.log(response);
 	}
 }
 
@@ -19,7 +19,7 @@ function facebook(){
 	}
 	facebookConnectPlugin.getLoginStatus(success, error);
 	function success(response){
-		console.log(response)
+		console.log(response);
 		if(response.status=="connected"){
 			fb_info();
 		}else{
@@ -42,7 +42,7 @@ var login_facebook = function(response){
 	function error(response){
 		console.log(response);
 	}
-}
+};
 
 //FACEBOOK USER INFO
 var fb_info = function(response){
@@ -57,6 +57,6 @@ var fb_info = function(response){
 	function error(response){
 		console.log(response);
 	}
-}
+};
 
 

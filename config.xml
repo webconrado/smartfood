@@ -66,8 +66,8 @@
 
 <!-- Facebook Login -->
 <gap:plugin name="com.phonegap.plugins.facebookconnect">
-	<param name="APP_ID" value="399248013601234" />
-	<param name="APP_NAME" value="felippegallo.com.br.Smartfoodweb" />
+	<param name="APP_ID" value="1716062265281020" />
+	<param name="APP_NAME" value="Smartfoodapp" />
 </gap:plugin>
 
 <!--In App Browser-->
