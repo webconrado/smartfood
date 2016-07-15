@@ -1,5 +1,5 @@
 //APP ID
-appId = "1716062265281020";
+appId = "1147700068609865";
 
 //FACEBOOK LOGOUT
 function fb_logout(){
