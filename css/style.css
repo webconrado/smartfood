@@ -220,7 +220,7 @@ input,textarea,select {
 
 
 .navbar-fixed .toolbar:not(.messagebar){
-    top: calc(100vh - 51px);
+    top: calc(100vh - 71px);
     top: calc(100vh - 71px);
 }
 .navbar-fixed .tabbar-labels:not(.messagebar) ~ .page-content{
