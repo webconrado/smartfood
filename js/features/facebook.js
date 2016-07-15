@@ -15,7 +15,7 @@ function fb_logout(){
 //FACEBOOK LOGIN
 function facebook(){
 	if(!window.cordova) {
-		facebookConnectPlugin.browserInit(399248013601234);
+		facebookConnectPlugin.browserInit(appId);
 	}
 	facebookConnectPlugin.getLoginStatus(success, error);
 	function success(response){
