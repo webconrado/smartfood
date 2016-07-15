@@ -222,7 +222,7 @@ input,textarea,select {
 .navbar-fixed .toolbar:not(.messagebar){
     /*top: calc(100vh - 51px);
     top: calc(100vh - 71px);*/
-	top:87%;
+	top:90%;
 }
 .navbar-fixed .tabbar-labels:not(.messagebar) ~ .page-content{
 	padding-top:100px;
