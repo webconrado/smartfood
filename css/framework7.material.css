@@ -2102,12 +2102,14 @@ html.pixel-ratio-3 .list-block .item-inner:after {
 }
 .list-block .item-link .item-inner {
   padding-right: 42px;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2060%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'm60%2061.5-38.25%2038.25-9.75-9.75%2029.25-28.5-29.25-28.5%209.75-9.75z'%20fill%3D'%23c7c7cc'%2F%3E%3C%2Fsvg%3E");
-  background-size: 10px 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox%3D'0 0 60 120' xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath d%3D'm60 61.5-38.25 38.25-9.75-9.75 29.25-28.5-29.25-28.5 9.75-9.75z' fill%3D'%23ff3300'%2F%3E%3C%2Fsvg%3E");
+  background-size: 20px 25px;
   background-repeat: no-repeat;
   background-position: 95% center;
   background-position: -webkit-calc(100% - 16px) center;
   background-position: calc(100% - 16px) center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
 }
 html:not(.watch-active-state) .list-block .item-link:active,
 .list-block .item-link.active-state {
