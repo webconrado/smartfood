@@ -2,7 +2,7 @@
 						<ul>
 							<li>
 
-									<a href="restaurante_detalhe.html?id={{id}}" class="item-link">
+									<a href="restaurante_detalhe.html?id={{id}}" class="item-link" id="restaurante-min">
 										<div class="item-content material">
 											<div class="row" style="width:100%; line-height:15px;">
 												<div class="col-25">
@@ -11,13 +11,14 @@
 													{{else}}
 														<div class="home_img"><img src="img/dummy48.png"></div>
 													{{/if}}
-													<div class="home_distancia" style="text-align:center;">1,4km</div>
+													<div class="home_distancia"><i class="fa fa-location-arrow"></i> 1,4km</div>
 												</div>
 												<div class="col-75">
-												<div class="home_titulo">{{titulo}}</div>
-												<span class="home_ncomentarios">{{tipo}}</span></br>
-												<span class="home_categoria">{{telefone}}</span></br>
-												<span class="home_endereco">{{endereco}}</span></br>
+													<div class="home_titulo">{{titulo}}</div>
+													<span class="home_categoria">{{tipo}}</span>
+													<span class="home_telefone"><i class="fa fa-phone"></i> {{telefone}}</span>
+													<span class="home_endereco"><i class="fa fa-map-marker"></i> {{endereco}}</span>
+													<span class="home_ncomentarios"><i class="fa fa-comments"></i> 12 comentários</span>
 												</div>
 											</div> 
 										</div>
@@ -25,6 +26,8 @@
 							</li>
 						</ul>
 						{{/each}}
+
+					
 
 
 
