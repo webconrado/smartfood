@@ -950,7 +950,6 @@ html:not(.watch-active-state) .subnavbar a.link:active:before,
   text-align: center;
   margin: 0;
   position: relative;
-  top: -1px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -185,7 +185,11 @@ input,textarea,select {
 	-ms-user-select: auto !important;
 	user-select: auto !important;
 }
-
+.icon-pedidos{
+	width: 28px;
+	height: 25px;
+	background: url('../icons/pedidos.png');
+}
 .panel{
 	background:#ff9933;
 	background:#fff;
@@ -247,7 +251,7 @@ input,textarea,select {
 	padding-bottom:56px;
 }
 .tabbar-labels a.tab-link, .tabbar-labels a.link{
-	padding-top:3px;
+	padding-top:11px;
 }
 .tabbar-labels{
 	height:52px;
