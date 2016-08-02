@@ -90,11 +90,10 @@ select:-moz-placeholder, textarea:-moz-placeholder, input[type="text"]:-moz-plac
 select:-ms-input-placeholder, textarea:-ms-input-placeholder, input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder, input[type="datetime"]:-ms-input-placeholder, input[type="datetime-local"]:-ms-input-placeholder, input[type="date"]:-ms-input-placeholder, input[type="month"]:-ms-input-placeholder, input[type="time"]:-ms-input-placeholder, input[type="week"]:-ms-input-placeholder, input[type="number"]:-ms-input-placeholder, input[type="email"]:-ms-input-placeholder, input[type="url"]:-ms-input-placeholder, input[type="search"]:-ms-input-placeholder, input[type="tel"]:-ms-input-placeholder, input[type="color"]:-ms-input-placeholder, .uneditable-input:-ms-input-placeholder { color:#999; }
 select::-webkit-input-placeholder, textarea::-webkit-input-placeholder, input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder, input[type="datetime"]::-webkit-input-placeholder, input[type="datetime-local"]::-webkit-input-placeholder, input[type="date"]::-webkit-input-placeholder, input[type="month"]::-webkit-input-placeholder, input[type="time"]::-webkit-input-placeholder, input[type="week"]::-webkit-input-placeholder, input[type="number"]::-webkit-input-placeholder, input[type="email"]::-webkit-input-placeholder, input[type="url"]::-webkit-input-placeholder, input[type="search"]::-webkit-input-placeholder, input[type="tel"]::-webkit-input-placeholder, input[type="color"]::-webkit-input-placeholder, .uneditable-input::-webkit-input-placeholder { color:#999; }
 select::-moz-placeholder, textarea::-moz-placeholder, input[type="text"]::-moz-placeholder, input[type="password"]::-moz-placeholder, input[type="datetime"]::-moz-placeholder, input[type="datetime-local"]::-moz-placeholder, input[type="date"]::-moz-placeholder, input[type="month"]::-moz-placeholder, input[type="time"]::-moz-placeholder, input[type="week"]::-moz-placeholder, input[type="number"]::-moz-placeholder, input[type="email"]::-moz-placeholder, input[type="url"]::-moz-placeholder, input[type="search"]::-moz-placeholder, input[type="tel"]::-moz-placeholder, input[type="color"]::-moz-placeholder, .uneditable-input::-moz-placeholder {
-	color:#000;
+	color:#666;
 	opacity:1;
 	font-family: 'Lato', sans-serif;
-	font-weight: 300;
-	text-transform: uppercase;
+	font-weight: 600;
 }
 .logo_title{
 	text-align:center;
@@ -165,7 +164,15 @@ html:not(.watch-active-state) .floating-button:active,
 	overflow-y:auto;
 }
 
-
+#form_comentario{
+	font-family: 'Lato', sans-serif;
+}
+#form_comentario .list-block .item-title{
+	font-family: 'Pacifico';
+	font-size: 24px;
+	color: #111;
+	font-weight: 500;
+}
 .restaurante_comentario_texto{
 	font-size:0.9em;
 }
@@ -177,7 +184,6 @@ html:not(.watch-active-state) .floating-button:active,
 	font-size:0.9em;
 	color:#333;
 }
-
 input,textarea,select {
 	-webkit-user-select: auto !important;
 	-khtml-user-select: auto !important;
@@ -353,8 +359,10 @@ a{
 	height:33px;
 	line-height:33px;
 	background:#ff3300;
-	border-radius:0px;
+	border-radius:8px;
     box-shadow: 1px 1px 2px #333;
+	font-family: 'Lato', sans-serif !important;
+	font-weight: 300 !important;
 }
 
 .navbar{
@@ -402,6 +410,7 @@ a{
 }
 .facebook-card .facebook-avatar {
 	float: left;
+	margin-right: 15px;
 }
 .facebook-card .facebook-name {
 	margin-left: 44px;
@@ -424,10 +433,12 @@ a{
 	display: block;
 }
 .facebook-card .card-content-inner {
-	padding: 15px 10px;
-	color:#ff9933;
-	padding-top:0px;
-}  
+	padding: 15px 13px;
+	padding-top: 10px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	color: #000;
+}
 
 .tiny_date{
 	font-size:12px;
@@ -495,14 +506,15 @@ a{
 }
 
 .img_tiny{
-	width:32px;
-	height:32px;
-	overflow:hidden;
+	width: 45px;
+	height: 45px;
+	overflow: hidden;
+	border-radius: 50%;
 }
 
 .img_tiny > img{
-	width:32px;
-	min-height:32px;
+	width:45px;
+	min-height:45px;
 }
 
 .img_slider{
@@ -704,23 +716,23 @@ a{
 
 
 ::-webkit-input-placeholder {
-	font-weight:100;
-	color: #eee;
+	font-weight:600;
+	color: #666;
 }
 
 :-moz-placeholder {
-	font-weight:100;
-	color: #eee;
+	font-weight:600;
+	color: #666;
 }
 
 ::-moz-placeholder {
-	font-weight:100;
-	color: #eee;
+	font-weight:600;
+	color: #666;
 }
 
 :-ms-input-placeholder {  
-	font-weight:100;
-	color: #eee;
+	font-weight:600;
+	color: #666;
 }
 
 
