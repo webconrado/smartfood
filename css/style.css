@@ -95,6 +95,10 @@ select::-moz-placeholder, textarea::-moz-placeholder, input[type="text"]::-moz-p
 	font-family: 'Lato', sans-serif;
 	font-weight: 600;
 }
+.navbar .center ::-webkit-input-placeholder,
+.navbar .center :-moz-placeholder{
+	color:#fff;
+}
 .logo_title{
 	text-align:center;
 	font-family: 'Ubuntu', sans-serif;

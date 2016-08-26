@@ -191,16 +191,20 @@ function restaurantes(){
 		error:error
 	});
 	function success(data,status){
-		console.log(data);
 		var template = $$('#template_home').html();
 		var compiledTemplate = Template7.compile(template);
 		var html = compiledTemplate(data);
+		console.log("data:");
+		console.log(data);
 		document.getElementById("div_home").innerHTML = html;
 		mapa(data);
 	}
 	function error(data,status){
 		myApp.alert(text_error);
 	}
+	var url = webserviceURL+route+"/"+localStorage.token;
+	console.log("url:");
+	console.log(url);
 }
 
 //Restaurantes

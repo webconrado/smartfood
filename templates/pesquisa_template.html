@@ -2,29 +2,29 @@
 						{{#if ok>0}}
 							{{#each text}}
 								<li>
-									<a href="restaurante.html?id={{id}}" class="item-link">
-										<div class="item-content material">
+									<a href="restaurante.html?id={{id}}" id="lists-restaurantes" class="item-link">
+										<div class="item-inner">
 											<div class="row" style="width:100%; line-height:15px;">
 												<div class="col-25">
 													{{#if imagem}}
-														<div class="home_img"><img onerror="imgError(this);" src="{{imagem}}"></div>
+													<div class="home_img"><img onerror="imgError(this);" src="{{imagem}}"></div>
 													{{else}}
-														<div class="home_img"><img src="img/dummy48.png"></div>
+													<div class="home_img"><img src="img/dummy48.png"></div>
 													{{/if}}
-													<div class="home_distancia" style="text-align:center;">1,4km</div>
+													<div class="home_distancia"><i class="fa fa-location-arrow"></i> 1,4km</div>
 												</div>
 												<div class="col-75">
-												<div class="home_titulo">{{titulo}}</div>
-												<span class="home_estrela">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</span>
-												<span class="home_ncomentarios">12 comentários</span></br>
-												<span class="home_categoria">Restaurante</span></br>
-												<span class="home_endereco">{{endereco}}</span></br>
+													<div class="home_titulo">{{titulo}}</div>
+													<span class="home_categoria">{{tipo}}</span>
+													<span class="home_estrela">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</span>
+													<span class="home_ncomentarios"><i class="fa fa-comments"></i> 12 comentários</span>
+													<span class="home_endereco"><i class="fa fa-map-marker"></i> {{endereco}}</span>
 												</div>
 											</div> 
 										</div>
