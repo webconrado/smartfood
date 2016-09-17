@@ -22,6 +22,7 @@ myApp.onPageAfterAnimation('home', function (page) {
 	gps();
 	usuario_home();
 	restaurantes();
+	//comentarios_restaurante();
 	pedidos_home();
 	pedidos_ler();
 	sugestao();
@@ -196,6 +197,11 @@ function restaurantes(){
 		var html = compiledTemplate(data);
 		console.log("data:");
 		console.log(data);
+
+		//var idRest = new Object;
+		//idRest.id = data.text[0].id;
+		//console.log("ID REST:");
+		//console.log(idRest.id);
 		document.getElementById("div_home").innerHTML = html;
 		mapa(data);
 	}
@@ -206,7 +212,28 @@ function restaurantes(){
 	console.log("url:");
 	console.log(url);
 }
+/*function comentarios_restaurante(){
+	route = "/restaurantes_comentarios";
+	$.ajax({
+		type: "POST",
+		url: webserviceURL+route+"/"+localStorage.token+"/",
+		data: stringData,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		var template = $$('#template_home').html();
+		var compiledTemplate = Template7.compile(template);
+		var html = compiledTemplate(data);
+		console.log("dataComments:");
+		console.log(data);
+	}
+	function error(data,status){
+		myApp.alert(text_error);
+	}
+	//var url = webserviceURL+route+"/"+localStorage.token;
 
+}*/
 //Restaurantes
 function restaurantes_tipo(tipo){
 	var formData = new Object();
