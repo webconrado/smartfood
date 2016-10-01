@@ -45,8 +45,16 @@
 	<preference name="webviewbounce" value="false" />
 	<preference name="DisallowOverscroll" value="true" />
 
-	<!-- Push notification -->
-	<plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
+	<!-- Push notification
+	<plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />-->
+
+	<feature name="PushPlugin" >
+		<param name="android-package" value="com.amazon.cordova.plugin.PushPlugin"/>
+	</feature>
+
+	<feature name="PushPlugin">
+		<param name="ios-package" value="PushPlugin" />
+	</feature>
 
 	<!--Geolocation-->
 	<feature name="Geolocation">
