@@ -37,43 +37,43 @@
 	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
 	</feature>
-	<plugin name="org.apache.cordova.statusbar" source="pgb">
+	<gap:plugin name="org.apache.cordova.statusbar" source="pgb">
 		<preference name="StatusBarOverlaysWebView" value="true" />
 		<preference name="StatusBarBackgroundColor" value="#000000"/>
-	</plugin>
+	</gap:plugin>
 
 	<preference name="webviewbounce" value="false" />
 	<preference name="DisallowOverscroll" value="true" />
 
 	<!-- Push notification -->
-	<plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
+	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
 
 	<!--Geolocation-->
 	<feature name="Geolocation">
 		<param name="ios-package" value="CDVLocation" />
 	</feature>
-	<plugin name="org.apache.cordova.geolocation" />
+	<gap:plugin name="org.apache.cordova.geolocation" />
 
 	<!--Camera-->
-	<plugin name="org.apache.cordova.camera" />
+	<gap:plugin name="org.apache.cordova.camera" />
 
 	<!--Upload de arquivos -->
-	<plugin name="org.apache.cordova.file-transfer" />
+	<gap:plugin name="org.apache.cordova.file-transfer" />
 
 	<!-- Facebook Login -->
-	<plugin name="com.phonegap.plugins.facebookconnect">
+	<gap:plugin name="com.phonegap.plugins.facebookconnect">
 		<param name="APP_ID" value="1032757650175668" />
 		<param name="APP_NAME" value="AppSmartfood" />
-	</plugin>
+	</gap:plugin>
 
 	<!--In App Browser-->
-	<plugin name="org.li8.inappbrowser" version="0.1" />
+	<gap:plugin name="org.li8.inappbrowser" version="0.1" />
 
 	<!-- Teclado sobrepondo para o android, igual iphone -->
 	<!--<preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />-->
 
 	<!-- Custom Preferences-->
-	<preference name="phonegap-version" value="cli-6.3.0" />
+	<preference name="phonegap-version" value="3.7.0" />          <!-- all: current version of PhoneGap -->
 	<preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
 	<preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
 	<preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->
@@ -83,14 +83,5 @@
 	<preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
 	<preference name="android-minSdkVersion"      value="14" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
 	<preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-
-	<plugin name="cordova-plugin-whitelist" spec="1" />
-	<access origin="*" />
-	<allow-intent href="http://*/*" />
-	<allow-intent href="https://*/*" />
-	<allow-intent href="tel:*" />
-	<allow-intent href="sms:*" />
-	<allow-intent href="mailto:*" />
-	<allow-intent href="geo:*" />
 </widget>
 
