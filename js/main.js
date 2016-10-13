@@ -11,6 +11,7 @@ function onLoad(){
 	if (window.cordova.platformId == "browser") {
 		facebookConnectPlugin.browserInit(1032757650175668);
 	}
+
 }
 
 //IMG ERROR

@@ -152,8 +152,14 @@ function carrinho_adicionar(obj,voucher,quantidade,observacao){
 
 		myApp.addNotification({
 			title: produto.titulo+' foi adicionado ao carrinho com sucesso!',
-			hold:1000
+			hold:5000
 		});
+
+		window.setTimeout(function() {
+			mainView.router.loadPage('home.html');
+			myApp.showTab("#tab4");
+		}, 2000);
+
 	}
 	carrinho();
 }

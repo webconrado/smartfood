@@ -2,12 +2,12 @@
 				<div class="pages navbar-through toolbar-through">
 					<div data-page="pedido_finalizar" class="page no-toolbar">
 
-							<div class="navbar">
+							<div class="navbar" id="page">
 								<div class="navbar-inner">
 									<div class="left">
 										<a href="#" class="link back icon-only"><i class="icon icon-back"></i></a>
 									</div>
-									<div class="center sliding">SmartFoodWeb</div>
+									<div class="center sliding">Finalizar pedido</div>
 									<!--<div class="subnavbar">
 										<div class="buttons-row">
 											<a href="#" class="button btn_pedido_finalizar">Confirmar pedido</a>
@@ -26,14 +26,12 @@
 												<div class="item-inner">
 													<div class="item-title label">Pagamento *</div>
 													<div class="item-input">
-														<select name="pagamento" id="pagamento" onchange="campo_troco();">
-															<option value="" disabled selected>Escolha o pagamento</option>
+														<select name="pagamento" id="pagamento" onchange="add_campos();">
+															<option value="0" selected>Escolha o pagamento</option>
 															<option value="dinheiro">Dinheiro</option>
-															<option value="visa-debito">Visa Débito</option>
-															<option value="visa-credito">Visa Crédito</option>
-															<option value="master-debito">Master Débito</option>
-															<option value="master-credito">Master Crédito</option>
-															<option value="pagseguro">Pagseguro</option>
+															<option value="cartao-credito">Cartão de Crédito</option>
+															<option value="cartao-debito">Cartão de Débito</option>
+															<option value="boleto">Boleto</option>
 														</select>
 													</div>
 												</div>
@@ -50,6 +48,85 @@
 											</div>
 										</li>
 
+										<li id="li_cartao_credito">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Número do cartão</div>
+													<div class="item-input">
+														<input type="number" pattern="\d*" id="numero-cartao-credito" maxlength="16" placeholder="Digite o número do cartão aqui">
+													</div>
+												</div>
+											</div>
+
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Nome do cartão</div>
+													<div class="item-input">
+														<input type="text" pattern="\d*" id="nome-cartao-credito" placeholder="Digite o nome do cartão">
+													</div>
+												</div>
+											</div>
+
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Código CVV</div>
+													<div class="item-input">
+														<input type="number" pattern="\d*" id="digitos-cartao-credito" maxlength="3" placeholder="Digite os 3 dígitos que estão atrás do cartão">
+													</div>
+												</div>
+											</div>
+
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Validade Mês</div>
+													<div class="item-input">
+														<input type="number" id="validade-mes-cartao-credito" placeholder="Digite o mês de validade">
+													</div>
+												</div>
+											</div>
+
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Validade Ano</div>
+													<div class="item-input">
+														<input type="number" id="validade-ano-cartao-credito" placeholder="Digite o ano de validade">
+													</div>
+												</div>
+											</div>
+
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Bandeira do Cartão</div>
+													<div class="item-input">
+														<select id="bandeira-cartao-credito">
+															<option value="" selected>Escolha um cartão</option>
+														</select>
+														<select id="parcelas-cartao-credito" style="display: none">
+															<option value="1" selected>1</option>
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">CPF do dono do cartão</div>
+													<div class="item-input">
+														<input type="text" id="cpf-cartao-credito" maxlength="14" placeholder="Digite o CPF do dono cartão">
+													</div>
+												</div>
+											</div>
+
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title label">Nascimento do dono do cartão</div>
+													<div class="item-input">
+														<input type="text" id="nascimento-cartao-credito" maxlength="10" placeholder="Digite a data de nascimento do dono do cartão">
+													</div>
+												</div>
+											</div>
+										</li>
+
 										<li>
 											<div class="item-content">
 												<div class="item-inner">
@@ -57,8 +134,7 @@
 													<div class="item-input">
 														<select name="id_endereco" id="div_pedido_finalizar_enderecos" onchange="pedido_finalizar_endereco_novo();">
 														</select>
-														<script id="template_pedido_finalizar_enderecos" type="text/template7">
-														</script>
+														<script id="template_pedido_finalizar_enderecos" type="text/template7"></script>
 													</div>
 												</div>
 											</div>
@@ -117,7 +193,7 @@
 							</form>
 
 							<div class="content-block">
-								<a href="#" class="button btn_pedido_finalizar">Confirmar pedido</a>
+								<a href="#" class="button btn_pedido_finalizar" id="btn-fechar-pedido">Confirmar pedido</a>
 							</div>
 
 						</div>

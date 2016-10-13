@@ -27,6 +27,7 @@ myApp.onPageAfterAnimation('home', function (page) {
 	pedidos_ler();
 	sugestao();
 	carrinho();
+	//pagseguroSession();
 
 	//Remove os vouchers
 	carrinhoArray = JSON.parse(localStorage.carrinho);
@@ -212,6 +213,26 @@ function restaurantes(){
 	console.log("url:");
 	console.log(url);
 }
+/*
+//session pagseguro
+function pagseguroSession(){
+	route = "/session-pagseguro";
+	$.ajax({
+		type: "GET",
+		url: APIPaymentsUrl+route+"/",
+		data: stringData,
+		success: success,
+		error:error
+	});
+	function success(data,status){
+		console.log("sessionId:");
+		console.log(data);
+		PagSeguroDirectPayment.setSessionId(data.sessionId)
+	}
+	function error(data,status){
+		myApp.alert(text_error);
+	}
+}*/
 /*function comentarios_restaurante(){
 	route = "/restaurantes_comentarios";
 	$.ajax({
