@@ -10,13 +10,18 @@ myApp.onPageInit('pedido_finalizar', function(page) {
     $("#cpf-cartao-credito").mask('000.000.000-00', {
         reverse: true
     });
+    $("#cpf-cartao-debito").mask('000.000.000-00', {
+        reverse: true
+    });
     $("#nascimento-cartao-credito").mask('00/00/0000', {
         reverse: true
     });
     $("#li_troco").hide();
     $("#li_cartao_credito").hide();
+    $("#li_cartao_debito").hide();
 
     getSessionId();
+    getUser();
 
     $('.btn_pedido_finalizar').on('click', function(event){
         event.preventDefault();
@@ -57,7 +62,7 @@ function getSessionId() {
         }
     })
 }
-//Show hide troco
+
 function add_campos() {
     if ($("#pagamento").val() == "dinheiro") {
         $("#li_troco").show();
@@ -77,7 +82,27 @@ function add_campos() {
         $("#li_cartao_debito").hide();
     }
 }
-
+function getUser(){
+    route = "/usuario";
+    $.ajax({
+        type: "GET",
+        url: webserviceURL+route+"/"+localStorage.token,
+        data: stringData,
+        success: success,
+        error:error
+    });
+    function success(data,status){
+        console.log(data);
+        $("#id_user").val(data.text[0].id);
+        $("#nome").val(data.text[0].nome);
+        $("#email").val(data.text[0].email);
+        let telefone = data.text[0].telefone.replace(/[^\d]+/g, '');
+        $("#telefone").val(telefone);
+    }
+    function error(data,status){
+        myApp.alert(text_error);
+    }
+}
 //Carrinho finalizar
 function carrinho_finalizar() {
     data = new Object();
@@ -266,6 +291,12 @@ function pedido_finalizar(){
                 myApp.alert("O nascimento do titular do cartão deve ser informado no seguinte formato: dd/mm/aaaa");
             } else if ($('#div_pedido_finalizar_enderecos').val() == "0") {
                 myApp.alert("Escolha um endereço para entrega.");
+            } else if ($('#telefone').val() == "") {
+                myApp.alert("Ocorreu um erro no sistema, tente novamente.");
+            } else if ($('#email').val() == "") {
+                myApp.alert("Ocorreu um erro no sistema, tente novamente.");
+            } else if ($('#id').val() == "") {
+                myApp.alert("Ocorreu um erro no sistema, tente novamente.");
             } else {
 
                 var pages = $('.pages');
@@ -279,7 +310,11 @@ function pedido_finalizar(){
                 var numeroParcelas = form_fechar_pedido.find('#parcelas-cartao-credito').val();
                 var cpf_cartao = form_fechar_pedido.find('#cpf-cartao-credito').val();
                 var cpf_cartao_tratado = cpf_cartao.replace(/[^\d]+/g, '');
-
+                var nascimento_cartao = form_fechar_pedido.find('#nascimento-cartao-credito').val();
+                var nascimento_cartao_tratado = nascimento_cartao.replace(/[^\d]+/g, '');
+                var telefone = form_fechar_pedido.find('#telefone').val();
+                var email = form_fechar_pedido.find('#email').val();
+                var id = form_fechar_pedido.find('#id').val();
                 var hash = PagSeguroDirectPayment.getSenderHash();
                 var bin = numero.substring(0, 6);
                 PagSeguroDirectPayment.getBrand({
@@ -290,15 +325,18 @@ function pedido_finalizar(){
                             title: 'Aguarde enquanto verificamos os dados fornecidos do cartão.',
                             hold: 5000
                         }),
-                            pegarToken(numero, cartao, codigo, validade_mes, validade_ano, hash);
+                        pegarToken(numero, cartao, codigo, validade_mes, validade_ano, hash, nome, cpf_cartao_tratado, nascimento_cartao_tratado, telefone, email, id);
+                        console.log(response);
                     },
                     error: function (response) {
                         var errosCartao = mostrarErros(response);
                         myApp.alert(errosCartao);
+                        console.log(response);
                     }
                 });
 
-                function pegarToken(numero, cartao, codigo, validade_mes, validade_ano, hash) {
+                function pegarToken(numero, cartao, codigo, validade_mes, validade_ano, hash, nome_cartao, cpf_cartao, nascimento_cartao, telefone, email, id) {
+
                     data = new Object();
                     data.text = JSON.parse(localStorage.carrinho);
                     var total = 0;
@@ -315,51 +353,175 @@ function pedido_finalizar(){
                         expirationMonth: validade_mes,
                         expirationYear: validade_ano,
                         success: function (response) {
-                            console.log(total);
+                            console.log(response);
                             var parcelas = (numeroParcelas == 1) ? 1 : numeroParcelas;
-                            fecharPedido(total, parcelas, cartao, response.card.token, hash);
+                            fecharPedido(total, parcelas, cartao, response.card.token, hash, nome_cartao, cpf_cartao, nascimento_cartao, telefone, email, id);
+                            myApp.showPreloader();
                         },
                         error: function (response) {
+                            myApp.hidePreloader();
                             var errosCartao = mostrarErros(response);
                             myApp.alert(errosCartao);
+                            console.log(response);
                         }
                     });
                 }
 
-                function fecharPedido(totalPagamento, parcelas, cartao, token, hash) {
-                    PagSeguroDirectPayment.getInstallments({
-                        amount: totalPagamento,
-                        maxInstallmentNoInterest: 4,
-                        brand: cartao,
-                        success: function (response) {
-                            var formData = myApp.formToJSON("#form_pedido_finalizar");
-                            formData.id_restaurante = localStorage.id_restaurante;
-                            formData.carrinho = JSON.parse(localStorage.carrinho);
-                            route = '/payments/cartao-de-credito.php';
-                            $.ajax({
-                                url: webserviceURL+route,
-                                type: 'POST',
-                                data: 'tokenCartao=' + token + '&cartao=' + cartao + '&parcelas=' + parcelas + '&hash=' + hash + '&valorParcela=' + response.installments[cartao][parcelas - 1]['installmentAmount'],
-                                success: function (data) {
-                                    //console.log(data);
-                                    if (data == 1) {
-                                        myApp.alert("Seu pedido foi feito com sucesso, quando o pagseguro liberar o pagamento você será notificado e seu pedido liberado.");
-                                    } else if (data == 2) {
-                                        myApp.alert("Seu pagamento está em análise, quando o pagseguro liberar o pagamento você será notificado e seu pedido liberado");
-                                    } else if (data == 3) {
-                                        myApp.alert("Seu pagamento foi aprovado, você acabou de receber um e-mail do pagseguro confirmando o pagamento e seu pedido já foi liberado.");
+                function fecharPedido(totalPagamento, parcelas, cartao, token, hash, nome_cartao, cpf_cartao, nascimento_cartao, telefone, email, id) {
+                    data = new Object();
+                    data.text = JSON.parse(localStorage.carrinho);
+                    var items_cart = "";
+                    for (i = 0; i < data.text.length; i++) {
+                        data.text[i].count = i;
+                        items_cart += '&item'+data.text[i].count+'=' + data.text[i].titulo + '&itemId'+data.text[i].count+'=' + data.text[i].id + '&itemDescription'+data.text[i].count+'=' + data.text[i].observacao + '&itemAmount'+data.text[i].count+'=' + data.text[i].valor + '&itemQuantity'+data.text[i].count+'=' + data.text[i].quantidade;
+                    }
+                    //console.log(items_cart);
+                    if(items_cart != ""){
+                        PagSeguroDirectPayment.getInstallments({
+                            amount: totalPagamento,
+                            maxInstallmentNoInterest: 4,
+                            brand: cartao,
+                            success: function (response) {
+                                var formData = myApp.formToJSON("#form_pedido_finalizar");
+                                formData.id_restaurante = localStorage.id_restaurante;
+                                formData.carrinho = JSON.parse(localStorage.carrinho);
+                                var stringData = JSON.stringify(formData);
+                                console.log(stringData+items_cart+'&tokenCartao=' + token + '&cartao=' + cartao + '&parcelas=' + parcelas + '&hash=' + hash + '&valorParcela=' + response.installments[cartao][parcelas - 1]['installmentAmount'] +'&nascimento=' + nascimento_cartao +'&cpf=' + cpf_cartao +'&nome=' + nome_cartao)
+                                route = "/pedido_finalizar";
+                                $.ajax({
+                                    url: webserviceURL + route + "/" + localStorage.token,
+                                    type: 'POST',
+                                    data: stringData+items_cart+'&tokenCartao=' + token + '&cartao=' + cartao + '&parcelas=' + parcelas + '&hash=' + hash + '&valorParcela=' + response.installments[cartao][parcelas - 1]['installmentAmount'] +'&nascimento=' + nascimento_cartao +'&cpf=' + cpf_cartao +'&nome=' + nome_cartao,
+                                    success: function (data) {
+                                        /*if (data == 1) {
+                                         myApp.alert("Seu pedido foi feito com sucesso, quando o pagseguro liberar o pagamento você será notificado e seu pedido liberado.");
+                                         } else if (data == 2) {
+                                         myApp.alert("Seu pagamento está em análise, quando o pagseguro liberar o pagamento você será notificado e seu pedido liberado");
+                                         } else if (data == 3) {
+                                         myApp.alert("Seu pagamento foi aprovado, você acabou de receber um e-mail do pagseguro confirmando o pagamento e seu pedido já foi liberado.");
+                                         }*/
+                                        console.log(data);
+                                        if (data.ok == 1) {
+                                            myApp.hidePreloader();
+                                            myApp.alert(data.text);
+                                            mainView.router.loadPage('home.html');
+                                            carrinho_limpar(1);
+                                            socket.emit('pedido', localStorage.token);
+                                            console.log(data);
+                                        } else {
+                                            myApp.hidePreloader();
+                                            myApp.alert(data.text);
+                                            console.log(data);
+                                        }
+                                    },
+                                    error: function(data){
+                                        myApp.hidePreloader();
+                                        console.log(data);
                                     }
-                                }
-                            });
-                        }, error: function (response) {
-                            var errosCartao = mostrarErros(response);
-                            myApp.alert(errosCartao);
-                        }
-                    });
+                                });
+                            }, error: function (response) {
+                                myApp.hidePreloader();
+                                var errosCartao = mostrarErros(response);
+                                myApp.alert(errosCartao);
+                                console.log(response);
+                            }
+                        });
+                    }
+
+
+
+
                 }
 
             }
 
+        }
+
+        if ($("#pagamento").val() == "cartao-debito"){
+
+            if ($("#banco-cartao-debito").val() == "0") {
+                myApp.alert("Escolha um banco.");
+            } else if ($("#cpf-cartao-debito").val() == "") {
+                myApp.alert("CPF da conta é obrigatório.");
+            } else if ($("#cpf-cartao-debito").val().length < 14) {
+                myApp.alert("CPF da conta inválido.");
+            } else if ($('#div_pedido_finalizar_enderecos').val() == "0") {
+                myApp.alert("Escolha um endereço para entrega.");
+            } else if ($('#telefone').val() == "") {
+                myApp.alert("Ocorreu um erro no sistema, tente novamente.");
+            } else if ($('#email').val() == "") {
+                myApp.alert("Ocorreu um erro no sistema, tente novamente.");
+            } else if ($('#id').val() == "") {
+                myApp.alert("Ocorreu um erro no sistema, tente novamente.");
+            } else {
+                myApp.showPreloader();
+                data = new Object();
+                data.text = JSON.parse(localStorage.carrinho);
+                var items_cart = "";
+                for (i = 0; i < data.text.length; i++) {
+                    data.text[i].count = i;
+                    items_cart += '&item'+data.text[i].count+'=' + data.text[i].titulo + '&itemId'+data.text[i].count+'=' + data.text[i].id + '&itemDescription'+data.text[i].count+'=' + data.text[i].observacao + '&itemAmount'+data.text[i].count+'=' + data.text[i].valor + '&itemQuantity'+data.text[i].count+'=' + data.text[i].quantidade;
+                }
+
+                if(items_cart != "") {
+                    var pages = $('.pages');
+                    var form_fechar_pedido = pages.find('#form_pedido_finalizar');
+                    var banco = form_fechar_pedido.find('#banco-cartao-debito').val();
+                    var cpf_conta = form_fechar_pedido.find('#cpf-cartao-debito').val();
+                    var cpf_conta_tratado = cpf_conta.replace(/[^\d]+/g, '');
+                    var nome = form_fechar_pedido.find('#nome').val();
+                    var email = form_fechar_pedido.find('#email').val();
+                    var telefone = form_fechar_pedido.find('#telefone').val();
+                    var id = form_fechar_pedido.find('#id').val();
+
+                    var hash = PagSeguroDirectPayment.getSenderHash();
+
+                    var formData = myApp.formToJSON("#form_pedido_finalizar");
+                    formData.id_restaurante = localStorage.id_restaurante;
+                    formData.carrinho = JSON.parse(localStorage.carrinho);
+                    var stringData = JSON.stringify(formData);
+                    route = "/pedido_finalizar";
+                    $.ajax({
+                        url: webserviceURL + route + "/" + localStorage.token,
+                        type: 'POST',
+                        data:  stringData+items_cart+'&hash='+hash+'&cpf=' + cpf_conta_tratado+'&nome=' + nome+'&banco=' + banco,
+                        beforeSend: function () {
+                            myApp.addNotification({
+                                title: 'Aguarde enquanto verificamos os dados fornecidos.',
+                                hold: 3000
+                            })
+                        },
+                        success: function (data) {
+                            if (data.ok == 1) {
+                                myApp.hidePreloader();
+                                myApp.alert(data.text);
+
+                                /*mainView.router.loadPage('home.html');
+                                var ref = window.open(data.link, '_blank', 'location=no');
+                                ref.addEventListener('loadstart', function(event) {
+                                    var urlSuccessPage = "http://smartfoodweb.com.br/site/";
+                                    if (event.url == urlSuccessPage) {
+                                        ref.close();
+                                    }
+                                });
+
+                                carrinho_limpar(1);
+                                socket.emit('pedido', localStorage.token);*/
+                                console.log(data);
+                            } else {
+                                myApp.hidePreloader();
+                                myApp.alert(data.text);
+                                console.log(data);
+                            }
+                        },
+                        error: function (data) {
+                            myApp.hidePreloader();
+                            console.log(data);
+                        },
+                    });
+                }
+
+            }
         }
 
     }

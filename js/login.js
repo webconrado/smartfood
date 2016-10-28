@@ -79,6 +79,7 @@ function logout(){
 			myApp.hideIndicator();
 			location.reload();
 		},1000);
+		localStorage.welcome=1;
 	})
 }
 

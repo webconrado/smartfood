@@ -18,178 +18,209 @@
 
 							<div class="page-content">
 								<form id="form_pedido_finalizar">
-								<div class="content-block-title" style="margin-top: 52px;">Detalhes:</div>
-								<div class="list-block">
-									<ul>
-										<li>
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Pagamento *</div>
-													<div class="item-input">
-														<select name="pagamento" id="pagamento" onchange="add_campos();">
-															<option value="0" selected>Escolha o pagamento</option>
-															<option value="dinheiro">Dinheiro</option>
-															<option value="cartao-credito">Cartão de Crédito</option>
-															<option value="cartao-debito">Cartão de Débito</option>
-															<option value="boleto">Boleto</option>
-														</select>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li id="li_troco">
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Troco para:</div>
-													<div class="item-input">
-														<input type="number" pattern="\d*" name="troco" id="troco" placeholder="Troco para qual valor?" />
-													</div>
-												</div>
-											</div>
-										</li>
+									<div class="content-block-title">Resumo do pedido:</div>
+									<div class="list-block" id="div_pedido_finalizar">
+										<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
+									</div>
+									<script id="template_pedido_finalizar" type="text/template7"></script>
+									<input type="hidden" name="id_user" id="id_user" value="" />
+									<input type="hidden" name="nome" id="nome" value="" />
+									<input type="hidden" name="email" id="email" value="" />
+									<input type="hidden" name="telefone" id="telefone" value="" />
 
-										<li id="li_cartao_credito">
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Número do cartão</div>
-													<div class="item-input">
-														<input type="number" pattern="\d*" id="numero-cartao-credito" maxlength="16" placeholder="Digite o número do cartão aqui">
+									<div class="content-block-title" style="margin-top: 20px;">Detalhes do pagamento:</div>
+									<div class="list-block">
+										<ul>
+											<li>
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Pagamento *</div>
+														<div class="item-input">
+															<select name="pagamento" id="pagamento" onchange="add_campos();">
+																<option value="0" selected>Escolha o pagamento</option>
+																<option value="dinheiro">Dinheiro</option>
+																<option value="cartao-credito">Cartão de Crédito</option>
+																<option value="cartao-debito">Débito Online</option>
+																<option value="boleto">Boleto</option>
+															</select>
+														</div>
 													</div>
 												</div>
-											</div>
+											</li>
+											<li id="li_troco">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Troco para:</div>
+														<div class="item-input">
+															<input type="number" pattern="\d*" name="troco" id="troco" placeholder="Troco para qual valor?" />
+														</div>
+													</div>
+												</div>
+											</li>
 
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Nome do cartão</div>
-													<div class="item-input">
-														<input type="text" pattern="\d*" id="nome-cartao-credito" placeholder="Digite o nome do cartão">
+											<li id="li_cartao_credito">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Número do cartão*</div>
+														<div class="item-input">
+															<input type="number" pattern="\d*" id="numero-cartao-credito" maxlength="16" placeholder="Digite o número do cartão aqui">
+														</div>
 													</div>
 												</div>
-											</div>
 
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Código CVV</div>
-													<div class="item-input">
-														<input type="number" pattern="\d*" id="digitos-cartao-credito" maxlength="3" placeholder="Digite os 3 dígitos que estão atrás do cartão">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Nome no cartão*</div>
+														<div class="item-input">
+															<input type="text" pattern="\d*" id="nome-cartao-credito" placeholder="Digite o nome no cartão">
+														</div>
 													</div>
 												</div>
-											</div>
 
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Validade Mês</div>
-													<div class="item-input">
-														<input type="number" id="validade-mes-cartao-credito" placeholder="Digite o mês de validade">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Código CVV*</div>
+														<div class="item-input">
+															<input type="number" pattern="\d*" id="digitos-cartao-credito" maxlength="3" placeholder="Digite os 3 dígitos que estão atrás do cartão">
+														</div>
 													</div>
 												</div>
-											</div>
 
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Validade Ano</div>
-													<div class="item-input">
-														<input type="number" id="validade-ano-cartao-credito" placeholder="Digite o ano de validade">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Validade Mês*</div>
+														<div class="item-input">
+															<input type="number" id="validade-mes-cartao-credito" placeholder="Digite o mês de validade">
+														</div>
 													</div>
 												</div>
-											</div>
 
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Bandeira do Cartão</div>
-													<div class="item-input">
-														<select id="bandeira-cartao-credito">
-															<option value="" selected>Escolha um cartão</option>
-														</select>
-														<select id="parcelas-cartao-credito" style="display: none">
-															<option value="1" selected>1</option>
-														</select>
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Validade Ano*</div>
+														<div class="item-input">
+															<input type="number" id="validade-ano-cartao-credito" placeholder="Digite o ano de validade">
+														</div>
 													</div>
 												</div>
-											</div>
 
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">CPF do dono do cartão</div>
-													<div class="item-input">
-														<input type="text" id="cpf-cartao-credito" maxlength="14" placeholder="Digite o CPF do dono cartão">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Bandeira do Cartão*</div>
+														<div class="item-input">
+															<select id="bandeira-cartao-credito">
+																<option value="" selected>Escolha um cartão</option>
+															</select>
+															<select id="parcelas-cartao-credito" style="display: none">
+																<option value="1" selected>1</option>
+															</select>
+														</div>
 													</div>
 												</div>
-											</div>
 
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Nascimento do dono do cartão</div>
-													<div class="item-input">
-														<input type="text" id="nascimento-cartao-credito" maxlength="10" placeholder="Digite a data de nascimento do dono do cartão">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">CPF do dono do cartão*</div>
+														<div class="item-input">
+															<input type="text" id="cpf-cartao-credito" maxlength="14" placeholder="Digite o CPF do dono cartão">
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
 
-										<li>
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Endereço*</div>
-													<div class="item-input">
-														<select name="id_endereco" id="div_pedido_finalizar_enderecos" onchange="pedido_finalizar_endereco_novo();">
-														</select>
-														<script id="template_pedido_finalizar_enderecos" type="text/template7"></script>
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Nascimento do dono do cartão*</div>
+														<div class="item-input">
+															<input type="text" id="nascimento-cartao-credito" maxlength="10" placeholder="Digite a data de nascimento do dono do cartão">
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-										<li>
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Retirada no local</div>
-													<div class="item-input">
-														<select name="retirada">
-															<option value="0" selected>Não</option>
-															<option value="1">Sim</option>
-														</select>
+											</li>
+
+											<li id="li_cartao_debito">
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Banco*</div>
+														<div class="item-input">
+															<select id="banco-cartao-debito">
+																<option value="0" selected>Escolha um banco</option>
+																<option value="bradesco">Bradesco</option>
+																<option value="itau">Itaú</option>
+																<option value="bancodobrasil">Banco do Brasil</option>
+																<option value="banrisul">Banrisul</option>
+																<option value="hsbc">HSBC</option>
+															</select>
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-										<li>
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">CPF</div>
-													<div class="item-input">
-														<input type="text" name="cpf_fiscal" id="cpf_fiscal" placeholder="CPF p/ nota fiscal" />
+
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">CPF do titular da conta*</div>
+														<div class="item-input">
+															<input type="text" id="cpf-cartao-debito" maxlength="14" placeholder="Digite o CPF do titular da conta">
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-										<li>
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Voucher</div>
-													<div class="item-input">
-														<input type="text" name="voucher" id="voucher" onkeyup="pedido_finalizar_voucher()" placeholder="Voucher de desconto" />
+											</li>
+
+											<li>
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Endereço*</div>
+														<div class="item-input">
+															<select name="id_endereco" id="div_pedido_finalizar_enderecos" onchange="pedido_finalizar_endereco_novo();">
+															</select>
+															<script id="template_pedido_finalizar_enderecos" type="text/template7"></script>
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-										<li>
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title label">Observações</div>
-													<div class="item-input">
-														<input type="text" name="obs" placeholder="Observações do pedido" />
+											</li>
+											<li>
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Retirada no local</div>
+														<div class="item-input">
+															<select name="retirada">
+																<option value="0" selected>Não</option>
+																<option value="1">Sim</option>
+															</select>
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<div class="content-block-title">Resumo do pedido:</div>
-								<div class="list-block" id="div_pedido_finalizar">
-									<div style="text-align:center; width:100%;"><i class="fa fa-circle-o-notch fa-spin" style></i></div>
-								</div>
-								<script id="template_pedido_finalizar" type="text/template7">
-								</script>
+											</li>
+											<li>
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">CPF p/ nota fiscal</div>
+														<div class="item-input">
+															<input type="text" name="cpf_fiscal" id="cpf_fiscal" placeholder="Digite um CPF se desejar nota fiscal" />
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Voucher</div>
+														<div class="item-input">
+															<input type="text" name="voucher" id="voucher" onkeyup="pedido_finalizar_voucher()" placeholder="Voucher de desconto" />
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="item-content">
+													<div class="item-inner">
+														<div class="item-title label">Observações</div>
+														<div class="item-input">
+															<input type="text" name="obs" placeholder="Observações do pedido" />
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
 							</form>
 
 							<div class="content-block">

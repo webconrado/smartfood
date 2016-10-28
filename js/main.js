@@ -73,7 +73,11 @@ function onDeviceReady(){
 	gps();
 
 	//CARRINHO RESET
-	localStorage.carrinho="[]";
+	if(localStorage.carrinho){
+		localStorage.carrinho = localStorage.carrinho;
+	}else{
+		localStorage.setItem('carrinho',"[]");
+	}
 
 	//WEBINTENT
 	/*window.plugins.webintent.startActivity({

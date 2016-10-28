@@ -163,6 +163,7 @@ function mapa(data){
 			lat: data.text[i].lat,
 			lng: data.text[i].lng,
 			title: data.text[i].id,
+			icon: data.text[i].imagem,
 			/*label: data.text[i].id,
 			icon: icon,*/
 			infoWindow: {
@@ -196,13 +197,8 @@ function restaurantes(){
 		var template = $$('#template_home').html();
 		var compiledTemplate = Template7.compile(template);
 		var html = compiledTemplate(data);
-		console.log("data:");
-		console.log(data);
-
-		//var idRest = new Object;
-		//idRest.id = data.text[0].id;
-		//console.log("ID REST:");
-		//console.log(idRest.id);
+		//console.log("data:");
+		//console.log(data);
 		document.getElementById("div_home").innerHTML = html;
 		mapa(data);
 	}
