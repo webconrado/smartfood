@@ -158,14 +158,12 @@ function mapa(data){
 			new google.maps.Point(16,16), //origin
 			new google.maps.Point(0,0) //anchor 
 		);
-
 		map.addMarker({
 			lat: data.text[i].lat,
 			lng: data.text[i].lng,
 			title: data.text[i].id,
-			icon: data.text[i].imagem,
-			/*label: data.text[i].id,
-			icon: icon,*/
+			label: data.text[i].id,
+			icon: icon,
 			infoWindow: {
 				content: '<a href="restaurante_detalhe.html?id='+data.text[i].id+'"><div class="img_tiny" style="float:left; margin-right:5px;"><img onerror="imgError(this);" src="'+data.text[i].imagem+'"></div><h3 style="margin:0px; display:inline-block;">'+data.text[i].titulo+'</h3></a>'
 			}
