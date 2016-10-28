@@ -8,7 +8,7 @@
 	<author href="https://conradoweb.com.br" email="faleconosco@conradoweb.com.br">
 		Conradoweb
 	</author>
-	android:debugable-"true"
+
 	<icon src="icons/android.png" />
 	<icon src="icons/iphone57.png" gap:platform="ios" width="57" height="57" />
 	<icon src="icons/iphone60.png" gap:platform="ios" width="60" height="60" />
