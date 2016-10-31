@@ -37,7 +37,7 @@
 	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
 	</feature>
-	<plugin name="org.apache.cordova.statusbar" source="pgb">
+	<plugin name="cordova-plugin-statusbar" source="pgb">
 		<preference name="StatusBarOverlaysWebView" value="true" />
 		<preference name="StatusBarBackgroundColor" value="#000000"/>
 	</plugin>
@@ -57,13 +57,15 @@
 	<plugin name="cordova-plugin-camera" version="2.1.0" />
 
 	<!--Upload de arquivos -->
-	<plugin name="org.apache.cordova.file-transfer" />
+	<plugin name="cordova-plugin-file-transfer" />
 
 	<!-- Facebook Login -->
 	<plugin name="com.phonegap.plugins.facebookconnect">
 		<param name="APP_ID" value="1032757650175668" />
 		<param name="APP_NAME" value="AppSmartfood" />
 	</plugin>
+
+	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
 
 	<!--In App Browser-->
 	<!--<plugin name="org.li8.inappbrowser" version="0.1" />-->
