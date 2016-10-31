@@ -46,13 +46,14 @@
 	<preference name="DisallowOverscroll" value="true" />
 
 	<!-- Push notification -->
-	<plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
+	<plugin name="com.parse.cordova.core.pushplugin" spec="0.1.0" source="pgb" />
+	<plugin name="com.parse.cordova.core.iospushplugin" spec="0.1.0" source="pgb" />
 
 	<!--Geolocation-->
 	<feature name="Geolocation">
 		<param name="ios-package" value="CDVLocation" />
 	</feature>
-	<plugin name="org.apache.cordova.geolocation" />
+	<plugin name="com.jmi2.cordova.geolocation" spec="0.3.15" source="pgb" />
 
 	<!--Camera-->
 	<plugin name="org.apache.cordova.camera" />
