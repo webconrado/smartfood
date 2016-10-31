@@ -20,13 +20,7 @@
 	<splash platform="ios" src="icons/splash.png" width="640" height="1136" />
 	<splash src="icons/splash.png"/>
 
-	<feature name="http://api.phonegap.com/1.0/geolocation"/>
-	<feature name="http://api.phonegap.com/1.0/network"/>
-	<feature name="http://api.phonegap.com/1.0/notification"/>
-	<feature name="http://api.phonegap.com/1.0/device"/>
-	<feature name="http://api.phonegap.com/1.0/camera"/>
-	<feature name="http://api.phonegap.com/1.0/file"/>
-	<feature name="http://api.phonegap.com/1.0/media"/>
+	
 	<!--<feature name="http://api.phonegap.com/1.0/battery"/>-->
 	<!--<feature name="http://api.phonegap.com/1.0/contacts"/>-->
 
@@ -60,7 +54,7 @@
 	<plugin name="cordova-plugin-file-transfer" />
 
 	<!-- Facebook Login -->
-	
+
 
 	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
 
