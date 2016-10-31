@@ -37,13 +37,14 @@
 	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
 	</feature>
-	<gap:plugin name="cordova-plugin-statusbar" source="git" spec="https://github.com/apache/cordova-plugin-statusbar">
+	<gap:plugin name="org.apache.cordova.statusbar" source="pgb">
 		<preference name="StatusBarOverlaysWebView" value="true" />
 		<preference name="StatusBarBackgroundColor" value="#000000"/>
 	</gap:plugin>
 
 	<preference name="webviewbounce" value="false" />
 	<preference name="DisallowOverscroll" value="true" />
+
 	<!-- Push notification -->
 	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
 
@@ -51,13 +52,13 @@
 	<feature name="Geolocation">
 		<param name="ios-package" value="CDVLocation" />
 	</feature>
-	<gap:plugin name="cordova-plugin-geolocation" version="2.1.0" />
-	<gap:plugin name="cordova-plugin-camera" version="2.1.0" />
+	<gap:plugin name="org.apache.cordova.geolocation" />
+
+	<!--Camera-->
+	<gap:plugin name="org.apache.cordova.camera" />
 
 	<!--Upload de arquivos -->
-	<gap:plugin name="cordova-plugin-file-transfer" />
-
-	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
+	<gap:plugin name="org.apache.cordova.file-transfer" />
 
 	<!-- Facebook Login -->
 	<gap:plugin name="com.phonegap.plugins.facebookconnect">
@@ -84,3 +85,4 @@
 	<preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
 </widget>
 
+>
