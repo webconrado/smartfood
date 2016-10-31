@@ -75,7 +75,7 @@
 	<feature name="InAppBrowser" />
 
 
-	<plugin name="com.phonegap.plugins.facebookconnect" spec="0.9.0" source="npm">
+	<plugin name="com.phonegap.plugins.facebookconnect" source="git" spec="https://github.com/phonegap-build/FacebookConnect">
 		<param name="APP_ID" value="1032757650175668" />
 		<param name="APP_NAME" value="AppSmartfood" />
 	</plugin>
