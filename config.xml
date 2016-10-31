@@ -44,11 +44,8 @@
 
 	<preference name="webviewbounce" value="false" />
 	<preference name="DisallowOverscroll" value="true" />
-
-	<!-- Push notification
-	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />-->
-	<gap:plugin spec="https://github.com/phonegap-build/PushPlugin" />
-
+	<!-- Push notification -->
+	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
 
 	<!--Geolocation-->
 	<feature name="Geolocation">
