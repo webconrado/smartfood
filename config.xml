@@ -46,8 +46,9 @@
 	<preference name="DisallowOverscroll" value="true" />
 
 	<!-- Push notification -->
-	<plugin name="com.parse.cordova.core.pushplugin" spec="0.1.0" source="npm" />
-	<plugin name="com.parse.cordova.core.iospushplugin" spec="0.1.0" source="npm" />
+	<plugin name="phonegap-plugin-push" source="npm" />
+	<!--<plugin name="com.parse.cordova.core.pushplugin" spec="0.1.0" source="pgb" />
+	<plugin name="com.parse.cordova.core.iospushplugin" spec="0.1.0" source="pgb" /> -->
 
 	<!--Geolocation-->
 	<feature name="Geolocation">
