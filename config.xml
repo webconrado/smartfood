@@ -37,7 +37,7 @@
 	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
 	</feature>
-	<gap:plugin name="org.apache.cordova.statusbar" source="npm">
+	<gap:plugin name="cordova-plugin-statusbar" source="git" spec="https://github.com/apache/cordova-plugin-statusbar">
 		<preference name="StatusBarOverlaysWebView" value="true" />
 		<preference name="StatusBarBackgroundColor" value="#000000"/>
 	</gap:plugin>
@@ -45,8 +45,10 @@
 	<preference name="webviewbounce" value="false" />
 	<preference name="DisallowOverscroll" value="true" />
 
-	<!-- Push notification -->
-	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
+	<!-- Push notification
+	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />-->
+	<gap:plugin spec="https://github.com/phonegap-build/PushPlugin" />
+
 
 	<!--Geolocation-->
 	<feature name="Geolocation">
