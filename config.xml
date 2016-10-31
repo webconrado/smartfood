@@ -75,10 +75,7 @@
 	<feature name="InAppBrowser" />
 
 
-	<plugin name="com.phonegap.plugins.facebookconnect" source="git" spec="https://github.com/phonegap-build/FacebookConnect">
-		<param name="APP_ID" value="1032757650175668" />
-		<param name="APP_NAME" value="AppSmartfood" />
-	</plugin>
+	
 
 	<!-- Teclado sobrepondo para o android, igual iphone -->
 	<preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
