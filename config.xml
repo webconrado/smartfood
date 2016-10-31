@@ -53,10 +53,8 @@
 	<feature name="Geolocation">
 		<param name="ios-package" value="CDVLocation" />
 	</feature>
-	<plugin name="com.jmi2.cordova.geolocation" spec="0.3.15" source="pgb" />
-
-	<!--Camera-->
-	<plugin name="org.apache.cordova.camera" />
+	<plugin name="cordova-plugin-geolocation" version="2.1.0" />
+	<plugin name="cordova-plugin-camera" version="2.1.0" />
 
 	<!--Upload de arquivos -->
 	<plugin name="org.apache.cordova.file-transfer" />
