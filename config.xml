@@ -60,10 +60,7 @@
 	<plugin name="cordova-plugin-file-transfer" />
 
 	<!-- Facebook Login -->
-	<plugin name="com.phonegap.plugins.facebookconnect">
-		<param name="APP_ID" value="1032757650175668" />
-		<param name="APP_NAME" value="AppSmartfood" />
-	</plugin>
+	
 
 	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
 
