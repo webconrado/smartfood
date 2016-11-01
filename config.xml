@@ -55,7 +55,7 @@
 	<gap:plugin name="org.apache.cordova.geolocation" source="git" spec="https://github.com/apache/cordova-plugin-geolocation.git" />
 
 	<!--Camera-->
-	<gap:plugin name="org.apache.cordova.camera" source="git" spec="https://github.com/apache/cordova-plugin-camera.git" />
+	<gap:plugin name="org.apache.cordova.camera" />
 
 	<!--Upload de arquivos -->
 	<gap:plugin name="org.apache.cordova.file-transfer" />
