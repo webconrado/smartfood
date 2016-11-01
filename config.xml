@@ -37,7 +37,7 @@
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
 	</feature>
 
-	<gap:plugin name="cordova-plugin-statusbar" source="git" spec="https://github.com/apache/cordova-plugin-statusbar">
+	<gap:plugin name="org.apache.cordova.statusbar" source="pgb">
 		<preference name="StatusBarOverlaysWebView" value="true" />
 		<preference name="StatusBarBackgroundColor" value="#000000"/>
 	</gap:plugin>
@@ -46,17 +46,16 @@
 	<preference name="DisallowOverscroll" value="true" />
 
 	<!-- Push notification -->
-	<gap:plugin spec="https://github.com/phonegap-build/PushPlugin" />
+	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
 
 	<!--Geolocation-->
 	<feature name="Geolocation">
 		<param name="ios-package" value="CDVLocation" />
 	</feature>
-	<gap:plugin spec="https://github.com/apache/cordova-plugin-geolocation.git" />
+	<gap:plugin name="org.apache.cordova.geolocation" />
 
-	
 	<!--Camera-->
-	<gap:plugin spec="https://github.com/apache/cordova-plugin-camera.git" />
+	<gap:plugin name="org.apache.cordova.camera" />
 
 	<!--Upload de arquivos -->
 	<gap:plugin name="org.apache.cordova.file-transfer" />
