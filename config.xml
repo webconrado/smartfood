@@ -52,7 +52,7 @@
 	<feature name="Geolocation">
 		<param name="ios-package" value="CDVLocation" />
 	</feature>
-	<gap:plugin name="cordova-plugin-geolocation" version="2.1.0" />
+	<gap:plugin name="org.apache.cordova.geolocation" source="git" spec="https://github.com/apache/cordova-plugin-geolocation.git" />
 
 	<!--Camera-->
 	<gap:plugin name="org.apache.cordova.camera" />
