@@ -37,7 +37,7 @@
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
 	</feature>
 
-	<gap:plugin name="org.apache.cordova.statusbar" source="pgb">
+	<gap:plugin name="org.apache.cordova.statusbar" source="npm">
 		<preference name="StatusBarOverlaysWebView" value="true" />
 		<preference name="StatusBarBackgroundColor" value="#000000"/>
 	</gap:plugin>
@@ -46,28 +46,28 @@
 	<preference name="DisallowOverscroll" value="true" />
 
 	<!-- Push notification -->
-	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
+	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" source="npm" />
 
 	<!--Geolocation-->
 	<feature name="Geolocation">
 		<param name="ios-package" value="CDVLocation" />
 	</feature>
-	<gap:plugin name="org.apache.cordova.geolocation" />
+	<gap:plugin name="org.apache.cordova.geolocation" source="npm" />
 
 	<!--Camera-->
-	<gap:plugin name="org.apache.cordova.camera" />
+	<gap:plugin name="org.apache.cordova.camera" source="npm" />
 
 	<!--Upload de arquivos -->
-	<gap:plugin name="org.apache.cordova.file-transfer" />
+	<gap:plugin name="org.apache.cordova.file-transfer" source="npm" />
 
 	<!-- Facebook Login -->
-	<gap:plugin name="com.phonegap.plugins.facebookconnect">
+	<gap:plugin name="com.phonegap.plugins.facebookconnect" source="npm">
 		<param name="APP_ID" value="1032757650175668" />
 		<param name="APP_NAME" value="AppSmartfood" />
 	</gap:plugin>
 
 	<!--In App Browser-->
-	<gap:plugin name="org.li8.inappbrowser" version="0.1" />
+	<gap:plugin name="org.li8.inappbrowser" version="0.1" source="npm" />
 
 	<!-- Teclado sobrepondo para o android, igual iphone -->
 	<!--<preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />-->
